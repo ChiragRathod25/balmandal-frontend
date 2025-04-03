@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@media print {
+    body {
+        margin: 0 !important;
+    }
+}
+
+.main-container {
+    font-family: 'Lato', sans-serif;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 0 10px; /* Prevents text from touching edges */
+}
+
+/* Editor Content Styling */
+.ck-content {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    word-break: break-word;
+    padding-left: 20px; /* Ensures bullets and numbers are fully visible */
+}
+
+
+/* Editor Container */
+.editor-container__editor {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: normal;
+    border: 1px solid #ccc; /* Add a subtle border */
+    border-radius: 8px; /* Slightly rounded corners */
+    padding: 10px;
+    background: #fff; /* Background color to distinguish the editor */
+}
+
+/* Set a minimum height for the CKEditor editable area */
+.ck-editor__editable {
+    min-height: 250px; /* Adjust this value as needed */
+    max-height: 600px; /* Optional: Prevent excessive growth */
+    overflow-y: auto; /* Ensures scrolling when content exceeds max height */
+}
+
+
+
+/* Make Editor Width Responsive */
+.editor-container_classic-editor .editor-container__editor {
+    min-width: 100%;
+    max-width: 100%;
+}
+
+/* Fix Bullet & Number List Visibility */
+.ck-content ol,
+.ck-content ul {
+    padding-left: 25px; /* Ensures numbers/bullets are visible */
+}
+
+/* Word Count Section */
+.editor_container__word-count {
+    text-align: right;
+    font-size: 0.9em;
+    padding: 5px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .editor-container__editor {
+        min-width: 100%;
+    }
+
+    .ck-toolbar {
+        flex-wrap: wrap; /* Allow toolbar buttons to wrap */
+        justify-content: center;
+    }
+
+    .ck-editor__editable {
+        min-height: 200px; /* Reduce height for smaller screens */
+    }
+
+    .editor_container__word-count {
+        font-size: 0.8em;
+    }
+}
+
+/* Apply styles to CKEditor headings */
+.ck-content p {
+    font-size: 16px;
+    color: #333;
+}
+
+.ck-content h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.ck-content h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.ck-content h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.ck-content h4 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.ck-content h5 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.ck-content h6 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+
+
+.ck.ck-powered-by {
+    display: none !important;
+}

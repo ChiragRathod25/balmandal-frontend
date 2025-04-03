@@ -1,0 +1,21 @@
+{
+    "short_name": "APC Bal Mandal",
+    "name": "APC Bal Mandal",
+    "icons": [
+      {
+        "src": "./Aksharderi.jpg",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "./Aksharderi.jpg",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#317EFB"
+  }
+  

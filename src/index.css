@@ -1,0 +1,12 @@
+@import "tailwindcss";
+/* Reduce vertical spacing between multiple toasts */
+/* Reduce spacing between multiple toasts */
+#__react-hot-toast > div {
+    gap: 4px !important; /* Adjust the value as needed */
+    padding-top: 80px !important; /* Ensures all toasts start a bit lower */
+  }
+  
+  .modal-backdrop {
+    backdrop-filter: blur(8px);
+  }
+  
