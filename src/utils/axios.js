@@ -3,7 +3,7 @@ import config from '../conf/config';
 import databaseService from "../services/database.services";
 import log from './logger.js';
 const axiosInstance = axios.create({
-  baseURL: config.baseUrl,
+  baseURL: config.apiURL,
   withCredentials: true,
 });
 console.info('Axios instance created with base URL:', config.baseUrl);
