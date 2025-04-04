@@ -7,6 +7,7 @@ import useScrollToTop from './utils/useScrollToTop';
 import MyToaster from './MyToaster';
 import { registerAndSubscribe } from './utils/subscriptionHelper';
 import config from './conf/config';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 import { Layout } from './components';
 
@@ -36,8 +37,6 @@ function App() {
     getCurrentUser();
   }, []);
 
- 
-
   if (loading) {
     return <h2>Loading...</h2>;
   }
@@ -52,6 +51,7 @@ function App() {
 
         </main>
       </Layout>
+      <SpeedInsights />
     </div>
   );
 }
