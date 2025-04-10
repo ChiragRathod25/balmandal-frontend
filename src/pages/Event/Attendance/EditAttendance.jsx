@@ -10,7 +10,7 @@ function EditAttendance() {
       () => databaseService.getAttendanceByEventId({ eventId }),
       [eventId]
     );
-
+    
     const { loading, error, data: attendanceList } = useCustomReactQuery(fetchAttendance);
     if (loading) {
       return (
@@ -22,6 +22,7 @@ function EditAttendance() {
     if (error) {
       return <div className="text-red-500 text-center text-lg font-semibold">{error}</div>;
     }
+    
     return (
     <AttendanceForm  attendanceList={attendanceList} />
   )
