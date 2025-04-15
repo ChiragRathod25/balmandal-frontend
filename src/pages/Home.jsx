@@ -7,17 +7,35 @@ function Home() {
   const authStatus = useSelector((store) => store.auth.status);
   const isAdmin = useSelector((store) => store.auth.userData?.isAdmin);
   const navigate = useNavigate();
+  // get images stored in public/home/assets/imageCarousel folder
+  
+  const images = [
+    '/assets/imageCarousel/1.jpeg',
+    '/assets/imageCarousel/2.jpeg',
+    '/assets/imageCarousel/3.jpeg',
+    '/assets/imageCarousel/4.jpeg', 
+    '/assets/imageCarousel/5.jpeg',
+    '/assets/imageCarousel/6.jpeg',
+    '/assets/imageCarousel/7.jpeg',
+    '/assets/imageCarousel/8.jpeg',
+    '/assets/imageCarousel/9.jpeg', 
+    '/assets/imageCarousel/10.jpeg',
+    '/assets/imageCarousel/11.jpeg',
+    '/assets/imageCarousel/12.jpeg',
+    '/assets/imageCarousel/13.jpeg',
+    '/assets/imageCarousel/14.jpeg',
+    '/assets/imageCarousel/15.jpeg',
+    '/assets/imageCarousel/16.jpeg',
+    
+  ];
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
       {/* Image Carousel */}
       <div className="w-full max-w-lg mx-auto mb-6 rounded-lg shadow-lg overflow-hidden">
         <ImageCarousel
-          images={[
-            'https://th.bing.com/th/id/OIP.4pED-q1sgWSjlAAHMGh2wwHaJ4?rs=1&pid=ImgDetMain',
-            'https://th.bing.com/th/id/OIP.vjqkpnRF0w74OFPVbA4LzgHaLG?rs=1&pid=ImgDetMain',
-            'https://i.pinimg.com/originals/c1/40/b3/c140b38336cdb7f3db13fdb9d3eed853.jpg',
-          ]}
+          
+          images={images}
           mode="fade"
         />
       </div>
