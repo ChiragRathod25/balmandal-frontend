@@ -10,23 +10,22 @@ function Home() {
   // get images stored in public/home/assets/imageCarousel folder
   
   const images = [
-    '/assets/imageCarousel/1.jpeg',
-    '/assets/imageCarousel/2.jpeg',
-    '/assets/imageCarousel/3.jpeg',
-    '/assets/imageCarousel/4.jpeg', 
-    '/assets/imageCarousel/5.jpeg',
-    '/assets/imageCarousel/6.jpeg',
-    '/assets/imageCarousel/7.jpeg',
-    '/assets/imageCarousel/8.jpeg',
-    '/assets/imageCarousel/9.jpeg', 
-    '/assets/imageCarousel/10.jpeg',
-    '/assets/imageCarousel/11.jpeg',
-    '/assets/imageCarousel/12.jpeg',
-    '/assets/imageCarousel/13.jpeg',
-    '/assets/imageCarousel/14.jpeg',
-    '/assets/imageCarousel/15.jpeg',
-    '/assets/imageCarousel/16.jpeg',
-    
+    '/imageCarousel/1.jpeg',
+    '/imageCarousel/2.jpeg',
+    '/imageCarousel/3.jpeg',
+    '/imageCarousel/4.jpeg', 
+    '/imageCarousel/5.jpeg',
+    '/imageCarousel/6.jpeg',
+    '/imageCarousel/7.jpeg',
+    '/imageCarousel/8.jpeg',
+    '/imageCarousel/9.jpeg', 
+    '/imageCarousel/10.jpeg',
+    '/imageCarousel/11.jpeg',
+    '/imageCarousel/12.jpeg',
+    '/imageCarousel/13.jpeg',
+    '/imageCarousel/14.jpeg',
+    '/imageCarousel/15.jpeg',
+    '/imageCarousel/16.jpeg',
   ];
 
   return (
