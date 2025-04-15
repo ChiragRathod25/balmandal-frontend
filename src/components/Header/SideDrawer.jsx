@@ -32,10 +32,6 @@ const SideDrawer = ({ isOpen, onClose }) => {
         to: '/about',
       },
       {
-        name: 'Install App',
-        to: '/app',
-      },
-      {
         name: 'Logout',
         to: '/logout',
       },
@@ -102,7 +98,7 @@ const SideDrawer = ({ isOpen, onClose }) => {
         <nav className="flex flex-col gap-4">
           {links &&
             Object.keys(links).map((section, index) => (
-              <div key={index} className="mb-4 space-y-2 flex flex-col">
+              <div key={index} className="space-y-2 flex flex-col">
                 <hr className="border-[#F2AE66] border-opacity-50" />
 
                 {links[section].map((link, index) => (
