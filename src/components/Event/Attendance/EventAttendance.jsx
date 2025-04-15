@@ -16,6 +16,7 @@ function EventAttendance() {
   );
 
   const { loading, error, data: attendanceList } = useCustomReactQuery(fetchAttendance);
+ 
 
   if (loading) {
     return (
@@ -44,7 +45,7 @@ function EventAttendance() {
               onClick={() => navigate(`/dashboard/user/${attendance.userId}`)}
             >
               <h3 className="text-lg font-semibold text-gray-900">
-                {attendance.user.firstName} {attendance.user.lastName}
+                {attendance.user?.firstName} {attendance.user?.lastName}
               </h3>
               <span
                 className={`px-3 py-1 text-sm font-medium rounded-full 

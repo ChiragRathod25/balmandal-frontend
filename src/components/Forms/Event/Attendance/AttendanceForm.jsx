@@ -2,21 +2,34 @@ import { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Input } from '../../../';
 import databaseService from '../../../../services/database.services';
-import useCustomReactQuery from '../../../../utils/useCustomReactQuery';
 import { useNavigate, useParams } from 'react-router-dom';
 function AttendanceForm({ attendanceList }) {
   const { eventId } = useParams();
   // here attendance is an array of objects which has name, status, and id
-  const fetchAllUsers = useCallback(() => databaseService.fetchAllUsers(), []);
-  const { loading, error, data: allUsers } = useCustomReactQuery(fetchAllUsers);
+  // const getEventAttendance = useCallback(() => databaseService.getAttendanceByEventId(), []);
+  // const { loading, error, data: eventAttendance } = useCustomReactQuery(getEventAttendance);
   const [search, setSearch] = useState('');
-  const [filteredUsers, setFilteredUsers] = useState(allUsers);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+ 
   useEffect(() => {
-    if (allUsers) {
+    if (attendanceList && attendanceList?.length > 0) {
+      
+      const allUsers = attendanceList?.map((attendance) => {
+        return {
+          _id: attendance.userId,
+          firstName: attendance.user?.firstName,
+          lastName: attendance.user?.lastName,
+          username: attendance.user?.username,
+          status: attendance?.status,
+        };
+      });
+      setAllUsers(allUsers);
       setFilteredUsers(allUsers);
     }
-  }, [allUsers]);
+  }, [attendanceList, eventId]);
 
   const handleSearch = (query) => {
     setSearch(query);
@@ -34,6 +47,7 @@ function AttendanceForm({ attendanceList }) {
         user.username?.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredUsers(filteredUsers);
+
   };
   const { register, handleSubmit, setValue } = useForm();
 
@@ -45,30 +59,44 @@ function AttendanceForm({ attendanceList }) {
   }
 
   const submit = async (data) => {
-    const attendanceList = allUsers.map((user) => {
+    setError(null);
+    // filter out the users whose attendance status is changed
+    const updatedAttendanceList = allUsers.map((user) => {
       return {
         userId: user._id,
-        status: data[user._id],
+        status: data[user._id] ? 'present' : 'absent',
       };
     });
+    // filter out the users whose attendance status is not changed
+    const filteredAttendanceList = updatedAttendanceList.filter((attendance) => {
+      const originalAttendance = attendanceList.find(
+        (original) => original.userId === attendance.userId
+      );
 
+      return originalAttendance.status !== attendance.status;
+    });
+   
+    // if no user attendance status is changed, return
+    if (filteredAttendanceList.length === 0) {
+      return;
+    }
+
+    // if attendanceList is not empty, add the attendance
+    // and navigate to the attendance page
     try {
-      const response = await databaseService.addAttendance({ eventId, attendanceList });
+      const response = await databaseService.addAttendance({
+        eventId,
+        attendanceList: filteredAttendanceList,
+      });
       if (response.statusCode === 200) {
         navigate(`/event/attendance/${eventId}`);
       }
     } catch (error) {
       console.error('Error while adding attendance', error);
+      setError(error.message);
     }
   };
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen text-lg font-semibold">
-        Loading...
-      </div>
-    );
-  }
   if (error) {
     return <div className="text-red-500 text-center text-lg font-semibold">{error}</div>;
   }
@@ -87,14 +115,12 @@ function AttendanceForm({ attendanceList }) {
               className="w-full p-2 rounded-lg border border-gray-300"
             />
             <div className="flex justify-around items-center mt-4">
+              <p className="text-lg font-semibold text-gray-700">Total Users: {allUsers?.length}</p>
               <p className="text-lg font-semibold text-gray-700">
-                Total Users: {filteredUsers?.length}
+                Present: {allUsers?.filter((user) => user.status === 'present')?.length}
               </p>
               <p className="text-lg font-semibold text-gray-700">
-                Present: {filteredUsers?.filter((user) => user.status === 'present')?.length}
-              </p>
-              <p className="text-lg font-semibold text-gray-700">
-                Absent: {filteredUsers?.filter((user) => user.status === 'absent')?.length}
+                Absent: {allUsers?.filter((user) => user.status === 'absent')?.length}
               </p>
             </div>
           </div>

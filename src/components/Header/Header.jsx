@@ -85,6 +85,13 @@ function Header() {
           >
             Profile
           </Link>
+          <Link
+            to="/app"
+            onClick={() => setIsMenuOpen(false)}
+            className="block md:inline hover:text-[#F2AE66] transition-all px-00 py-2"
+          >
+            Install App
+          </Link>
           {isAdmin && (
             <Link
             onClick={() => setIsMenuOpen(false)}
