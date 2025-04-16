@@ -13,7 +13,7 @@ function AllEvent() {
   const isAdmin = useSelector((state) => state.auth.userData?.isAdmin);
 
   if (loading) {
-    return <p className="text-center text-lg font-semibold mt-5">Loading posts...</p>;
+    return <p className="text-center text-lg font-semibold mt-5">Loading Events...</p>;
   }
 
   if (error) {
@@ -23,10 +23,8 @@ function AllEvent() {
   return (
     <QueryHandler queries={[{ loading, error }]}>
       <div className="container mx-auto p-4">
-        {Array.isArray(events) && events.length > 0 && (
-          <>
-            <h2 className="text-3xl font-bold mb-6 text-center">Events</h2>
-            {isAdmin && (
+      <h2 className="text-3xl font-bold mb-6 text-center">Events</h2>
+      {isAdmin && (
               <div className="m-2 flex justify-center">
                 <Button
                   onClick={() => navigate('/event/add')}
@@ -36,6 +34,10 @@ function AllEvent() {
                 </Button>
               </div>
             )}
+
+        {Array.isArray(events) && events.length > 0 && (
+          <>
+           
 
             {events.length > 0 ? (
               <div className="w-full     grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4">
