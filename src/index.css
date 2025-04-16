@@ -10,3 +10,10 @@
     backdrop-filter: blur(8px);
   }
   
+
+  .prose iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.5rem; /* Optional: matches rounded-lg */
+  }
+  
