@@ -18,7 +18,7 @@ function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
       middleName: user.middleName || '',
       email: user.email || '',
       mobile: user.mobile || '',
-      DOB: new Date(user.DOB).toISOString().split('T')[0] || '',
+      DOB: user?.DOB ? new Date(user.DOB).toISOString().split('T')[0] : '' || '',
       school: user.school || '',
       std: user.std || '',
       mediumOfStudy: user.mediumOfStudy || '',
