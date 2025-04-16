@@ -63,7 +63,7 @@ function UserDetails({ user,setEditing }) {
               )}
             </p>
             <p>
-              <span className="font-semibold">DOB:</span> {user?.DOB}
+              <span className="font-semibold">DOB:</span> {user?.DOB?.split('T')[0]}
             </p>
             <p>
               <span className="font-semibold">Standard:</span> {user?.std}

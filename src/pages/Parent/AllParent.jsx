@@ -26,9 +26,9 @@ function AllParent() {
 
   return (
     <QueryHandler queries={[{ loading, error }]}>
-      <div className="container mx-auto ">
+      <div className="container mx-auto p-4">
         {/* Title */}
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">{`${user}'s Parent Details`}</h2>
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">{`${user}'s Parent Details`}</h2>
 
         {/* Parent List */}
         {Array.isArray(parents) && parents.length > 0 ? (

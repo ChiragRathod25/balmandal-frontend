@@ -46,7 +46,8 @@ import {
   PendingApproval,
   InstallApp,
   About,
-  ForgetPassword
+  ForgetPassword,
+  ResetPassword,
 } from './pages/index.js';
 import { AuthLayout } from './components';
 
@@ -82,6 +83,12 @@ const router = createBrowserRouter([
         path:'/forgetPassword',
         element:(
             <ForgetPassword />
+        )
+      },
+      {
+        path:'/reset-password/:resetToken',
+        element:(
+            <ResetPassword />
         )
       },
       {

@@ -18,6 +18,7 @@ import Login from './Login';
 import Register from './Register';
 import Logout from './Logout';
 import ForgetPassword from './ForgetPassword';
+import ResetPassword from './ResetPassword';
 
 import AdminDashboard from './dashboard/AdminDashboard';
 import UserData from './dashboard/UserProfile';
@@ -47,6 +48,8 @@ import UserPosts from './Post/UserPosts';
 import PendingApproval from './Post/PendingApproval';
 import InstallApp from './InstallApp';
 import About from './About';
+
+
 export {
   AddAchievement,
   EditAchievement,
@@ -64,6 +67,7 @@ export {
   Login,
   Register,
   Logout,
+  ResetPassword,
   AdminDashboard,
   UserData,
   UserDetails,

@@ -1,15 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import databaseService from '../../../services/database.services';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Input, Button, Select } from '../..';
+import { updateUser } from '../../../slices/userSlice/authSlice';
 function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
   
   const navigate = useNavigate();
   const userId = useSelector((state) => state.dashboard.editableUser?._id);
   const isAdmin = useSelector((state) => state.auth.userData.isAdmin);
   const adminUserId = useSelector((state) => state.auth.userData._id);
-
+  const dispatch=useDispatch()
   const { register, handleSubmit } = useForm({
     defaultValues: {
       firstName: user.firstName || '',
@@ -17,13 +18,13 @@ function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
       middleName: user.middleName || '',
       email: user.email || '',
       mobile: user.mobile || '',
-      DOB: user.DOB || '',
+      DOB: new Date(user.DOB).toISOString().split('T')[0] || '',
       school: user.school || '',
       std: user.std || '',
       mediumOfStudy: user.mediumOfStudy || '',
     },
   });
-
+  
   const submit = async (data) => {
 
     if (isAdmin && userId) {
@@ -31,7 +32,6 @@ function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
         .updateUserDetails(data, userId)
         .then((response) => response.data)
         .then((response) => {
-        
           handleUserDetailsEditing(response);
           return response;
         })
@@ -44,6 +44,7 @@ function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
       const response = await databaseService
         .updateUserDetails(data)
         .then((response) => response.data)
+        .then((data)=>dispatch(updateUser(data)))
         .catch((error) => console.error('error while updating user details', error));
       if (response) {
         setEditing(false);

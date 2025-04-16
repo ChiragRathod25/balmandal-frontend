@@ -73,6 +73,8 @@ function ParentForm({ parent, isUsedWithModal = false, closeForm}) {
           .catch((error) => {
             console.error('Error while updating parent details', error);
           })
+          if(response)
+              navigate(`/parent/${response._id}`);
       } else {
         const response = await databaseService
           .addParentDetails(data)
@@ -104,7 +106,7 @@ function ParentForm({ parent, isUsedWithModal = false, closeForm}) {
     <Select
   label="Role"
   options={['Father', 'Mother']}
-  {...register('role', { required: true })}
+  {...register('role', { required: true})}
   className=" mb-4"
 />
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import databaseService from '../../../services/database.services';
-import { Button, Input, FileUploader, CloudFilesManager } from '../../';
+import { Button, Input, FileUploader, CloudFilesManager, Select } from '../../';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEditableUserTalent } from '../../../slices/dashboard/dashboardSlice';
@@ -17,6 +17,7 @@ function TalentForm({ talent, closeForm, isUsedWithModal = false }) {
       heading: talent?.heading || '',
       description: talent?.description || '',
       image: null,
+      talentType: talent?.talentType || 'Singing', // default value
     },
   });
 
@@ -74,6 +75,7 @@ function TalentForm({ talent, closeForm, isUsedWithModal = false }) {
       }
     } else {
       if (talent) {
+        console.log('Talent data', data);
         const response = await databaseService
           .updateTalent(data, talent?._id)
           .then((response) => response.data);
@@ -123,6 +125,34 @@ function TalentForm({ talent, closeForm, isUsedWithModal = false }) {
           {...register('heading', { required: true })}
           className="w-full"
         />
+        <Select
+          label="Talent Type: "
+          options={[
+            'Singing',
+            'Dancing',
+            'Acting',
+            'Comedy',
+            'Magic',
+            'Drawing',
+            'Painting',
+            'Writing',
+            'Elocution',
+            'Photography',
+            'Cooking',
+            'Sports',
+            'Instrumental Music',
+            'Craft Work',
+            'Storytelling',
+            'Mimicry',
+            'Debate',
+            'Quiz',
+            'Science Experiments',
+            'Other',
+          ]}
+          {...register('talentType', { required: true })}
+          className="w-full"
+        />
+
         <Input
           label="Description: "
           type="textarea"

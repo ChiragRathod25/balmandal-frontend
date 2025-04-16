@@ -213,6 +213,26 @@ export class DatabaseService {
     );
     
   }
+
+  async resetPassword({password},resetToken){
+    return toast.promise(
+      handleApiRequest(
+        () =>
+          axiosInstace.post(`/api/v1/user/reset-password/${resetToken}`, {
+            password,
+          }),
+        'resetPassword'
+      ),
+      {
+        loading: 'Resetting Password',
+        success: 'Password Reset successfully',
+        error: 'Error while resetting password',
+      },
+      {
+        id: 'resetPassword',
+      }
+    );
+  }
   async getCurrentuser() {
     return handleApiRequest(
       () => axiosInstace.get('/api/v1/user/getCurrentuser'),
@@ -226,6 +246,8 @@ export class DatabaseService {
     );
   }
   async logout() {
+    //clear cookies
+
     return toast.promise(
       handleApiRequest(() => axiosInstace.post('/api/v1/user/logout'), 'logout'),
       {
@@ -645,10 +667,11 @@ export class DatabaseService {
     }
     return handleApiRequest(() => axiosInstace.get(`/api/v1/talent/${talentId}`), 'getTalentById');
   }
-  async addTalent({ heading, description, image }, userId = null) {
+  async addTalent({ heading, description, image,talentType}, userId = null) {
     const formData = new FormData();
     formData.append('heading', heading);
     formData.append('description', description);
+    formData.append('talentType', talentType);
     if (image && image.length > 0) {
       Array.from(image).forEach((img) => formData.append('image', img));
     }
@@ -694,10 +717,11 @@ export class DatabaseService {
       }
     );
   }
-  async updateTalent({ heading, description, image, cloudFiles }, talentId, userId = null) {
+  async updateTalent({ heading, description, image, cloudFiles,talentType }, talentId, userId = null) {
     const formData = new FormData();
     formData.append('heading', heading);
     formData.append('description', description);
+    formData.append('talentType', talentType);
     if (image && image.length > 0) {
       Array.from(image).forEach((img) => formData.append('image', img));
     }

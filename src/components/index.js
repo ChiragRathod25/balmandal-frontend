@@ -48,6 +48,7 @@ import PostInteractions from "./Post/PostInteractions";
 import ForgetPassword from "./Authentication/ForgetPassword";
 import Login  from "./Authentication/Login";
 import SignUp  from "./Authentication/SignUp";
+import ResetPassword from "./Authentication/ResetPassword";
 
 export {
   QueryHandler,
@@ -100,5 +101,6 @@ export {
   ForgetPassword,
   Login,
   SignUp,
+  ResetPassword
 
 };

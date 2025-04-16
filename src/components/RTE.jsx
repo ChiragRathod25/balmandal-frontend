@@ -330,7 +330,7 @@ function RTE({ control, name, label, defaultValue = '' }) {
         },
         simpleUpload: {
           uploadUrl:config.uploadFileUrl,
-          // withCredentials: true,
+          withCredentials: true,
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
           },

@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Menu, X } from 'lucide-react';
@@ -13,12 +13,7 @@ function Header() {
       <div className="container  flex justify-between items-center px-6 w-full">
         {/* Logo */}
         <div className="text-2xl font-bold tracking-wide uppercase">
-
-          <Link
-            to="/"
-            className="flex items-center space-x-2"
-            onClick={() => setIsMenuOpen(false)}
-          >
+          <Link to="/" className="flex items-center space-x-2" onClick={() => setIsMenuOpen(false)}>
             APC Bal Mandal
           </Link>
         </div>
@@ -33,7 +28,11 @@ function Header() {
           className={`absolute md:static top-16 left-0 w-full md:w-auto bg-[#C30E59] md:bg-transparent md:flex md:space-x-8 p-5  md:p-0 text-lg font-medium shadow-lg md:shadow-none
           transition-all duration-300 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-[120%]'} md:translate-x-0 rounded-b-2xl md:rounded-none`}
         >
-          <Link to="/" className="block md:inline hover:text-[#F2AE66] transition-all px-00 py-2">
+          <Link
+            onClick={() => setIsMenuOpen(false)}
+            to="/"
+            className="block md:inline hover:text-[#F2AE66] transition-all px-00 py-2"
+          >
             Home
           </Link>
           {/* <Link
@@ -58,21 +57,21 @@ function Header() {
             Talent
           </Link> */}
           <Link
-           onClick={() => setIsMenuOpen(false)}
+            onClick={() => setIsMenuOpen(false)}
             to="/event"
             className="block md:inline hover:text-[#F2AE66] transition-all px-00 py-2"
           >
             Event
           </Link>
           <Link
-           onClick={() => setIsMenuOpen(false)}
+            onClick={() => setIsMenuOpen(false)}
             to="/post"
             className="block md:inline hover:text-[#F2AE66] transition-all px-00 py-2"
           >
             Posts
           </Link>
           <Link
-           onClick={() => setIsMenuOpen(false)}
+            onClick={() => setIsMenuOpen(false)}
             to="/notification"
             className="block md:inline hover:text-[#F2AE66] transition-all px-00 py-2"
           >
@@ -94,7 +93,7 @@ function Header() {
           </Link>
           {isAdmin && (
             <Link
-            onClick={() => setIsMenuOpen(false)}
+              onClick={() => setIsMenuOpen(false)}
               to="/dashboard"
               className="block md:inline hover:text-[#F2AE66] transition-all px-00 py-2"
             >
@@ -102,7 +101,7 @@ function Header() {
             </Link>
           )}
           <Link
-           onClick={() => setIsMenuOpen(false)}
+            onClick={() => setIsMenuOpen(false)}
             to={authStatus ? '/logout' : '/login'}
             className="block md:inline bg-white text-[#C30E59] px-6 py-2 rounded-lg hover:bg-[#E8E7AB] transition-all shadow-md"
           >

@@ -43,6 +43,14 @@ function Talent({ id, isUsedWithModal = false }) {
             <hr className="mb-4 border-gray-300" />
             <div className="whitespace-pre-wrap flex flex-row gap-2">
               <div>
+                <p className="font-semibold text-gray-800 mb-1">Talent Type:</p>
+              </div>
+              <div>
+                <p className="text-gray-700">{talent?.talentType}</p>
+              </div>
+            </div>
+            <div className="whitespace-pre-wrap flex flex-row gap-2">
+              <div>
                 <p className="font-semibold text-gray-800 mb-1">Description:</p>
               </div>
               <div>

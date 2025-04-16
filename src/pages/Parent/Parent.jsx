@@ -70,21 +70,21 @@ function Parent({ id, isUsedWithModal = false }) {
             </div>
 
             {!isUsedWithModal && (
-              <div className="flex flex-col sm:flex-row gap-4 mt-6">
+              <div className="flex flex-row sm:flex-row gap-4 mt-6">
                 <Button
-                  className="w-full sm:w-auto bg-blue-500 text-white px-4 py-2 rounded-lg"
+                  className="sm:w-auto bg-blue-500 text-white px-4 py-2 rounded-lg"
                   onClick={() => navigate(`/parent/edit/${parent._id}`)}
                 >
                   Edit Parent
                 </Button>
                 <Button
-                  className="w-full sm:w-auto bg-red-500 text-white px-4 py-2 rounded-lg"
+                  className="sm:w-auto bg-red-500 text-white px-4 py-2 rounded-lg"
                   onClick={() => handleDelete(parent._id)}
                 >
                   Delete Parent
                 </Button>
                 <Button
-                  className="w-full sm:w-auto bg-green-500 text-white px-4 py-2 rounded-lg"
+                  className="sm:w-auto bg-green-500 text-white px-4 py-2 rounded-lg"
                   onClick={() => navigate('/parent')}
                 >
                   Manage Parents

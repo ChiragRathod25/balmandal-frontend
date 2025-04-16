@@ -42,7 +42,9 @@ function Layout({ children }) {
       )}
 
       {/* MAIN */}
-      <div>{children}</div>
+      <div
+      className='min-h-screen flex-grow'
+      >{children}</div>
 
       {/* FOOTER */}
       {isMobilePWA ? (
