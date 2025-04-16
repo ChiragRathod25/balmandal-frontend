@@ -1,5 +1,5 @@
-import  { useCallback, useEffect, useState } from 'react';
-import {  CommentContainer, QueryHandler } from '../index';
+import { useCallback, useEffect, useState } from 'react';
+import { CommentContainer, QueryHandler } from '../index';
 import databaseService from '../../services/database.services';
 import { useParams } from 'react-router-dom';
 import useCustomReactQuery from '../../utils/useCustomReactQuery';
@@ -24,7 +24,6 @@ function PostInteractions() {
     }
   }, [initialLikes, authUser]);
 
-
   const handleLikeClick = async () => {
     if (!authUser) return;
 
@@ -41,6 +40,25 @@ function PostInteractions() {
       await databaseService.togglePostLike(postId);
     }
   };
+  const handleShareClick = async () => {
+    // by clicking it user can copy the post link to the clipboard and it will be shared in the social media
+    const postLink = `${window.location.origin}/post/${postId}`;
+    try {
+      await navigator.clipboard.writeText(postLink);
+      // show share options to social media on mobile and desktop
+      const shareData = {
+        title: 'Check out this post!',
+        text: `Read this post `,
+        url: postLink,
+      };
+
+      if (navigator.share) {
+        await navigator.share(shareData);
+      }
+    } catch (err) {
+      console.error('Error copying link: ', err);
+    }
+  };
 
   return (
     <QueryHandler queries={[{ loading, error }]}>
@@ -50,13 +68,14 @@ function PostInteractions() {
           onClick={handleLikeClick}
           className="flex items-center gap-2 text-lg font-medium transition-all duration-200"
         >
-          <span className={`text-2xl transition-transform duration-200 ${isLiked ? 'text-blue-500 scale-110' : 'text-gray-500'}`}>
-            {isLiked ? '👍' : '👍🏻'} 
+          <span
+            className={`text-2xl transition-transform duration-200 ${isLiked ? 'text-blue-500 scale-110' : 'text-gray-500'}`}
+          >
+            {isLiked ? '👍' : '👍🏻'}
           </span>
           <span className="text-gray-700">{likeCount}</span>
         </button>
 
-       
         <button
           onClick={() => setIsCommentContainerVisible(!isCommentContainerVisible)}
           className="flex items-center gap-2 text-lg font-medium text-gray-600 hover:text-gray-900 transition-all duration-200"
@@ -64,13 +83,14 @@ function PostInteractions() {
           💬 <span>Comment</span>
         </button>
 
-        
-        <button className="flex items-center gap-2 text-lg font-medium text-gray-600 hover:text-gray-900 transition-all duration-200">
+        <button
+          className="flex items-center gap-2 text-lg font-medium text-gray-600 hover:text-gray-900 transition-all duration-200"
+          onClick={() => handleShareClick()}
+        >
           🔗 <span>Share</span>
         </button>
       </div>
 
-      
       {isCommentContainerVisible && <CommentContainer />}
     </QueryHandler>
   );
