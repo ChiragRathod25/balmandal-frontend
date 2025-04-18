@@ -24,6 +24,10 @@ import AdminDashboard from './dashboard/AdminDashboard';
 import UserData from './dashboard/UserProfile';
 import UserDetails from './User/UserDetails';
 import UserProfile from './User/UserProfile';
+import AllUsers from './dashboard/AllUsers';
+import AddRegisteredUser from './dashboard/AddRegisteredUser';
+import BirthdayDetails from './dashboard/BirthdayDetails';
+
 
 import AddEvent from './Event/AddEvent';
 import EditEvent from './Event/EditEvent';
@@ -92,5 +96,8 @@ export {
   PendingApproval,
   InstallApp,
   About,
-  ForgetPassword
+  ForgetPassword,
+  AddRegisteredUser,
+  BirthdayDetails,
+  AllUsers
 };

@@ -1,89 +1,61 @@
-import { useCallback, useEffect, useState } from 'react';
-import databaseService from '../../services/database.services';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
-import { UserCard, Input } from '../../components';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../../components';
+import { Users, Cake, UserPlus, LayoutDashboard } from 'lucide-react';
+
 
 function AdminDashboard() {
-  const fetchAllUsers = useCallback(() => databaseService.fetchAllUsers(), []);
-  const { data: allUsers, loading, error } = useCustomReactQuery(fetchAllUsers);
-  const [users, setUsers] = useState([]);
-
-  const [search, setSearch] = useState('');
-
-  useEffect(() => {
-    if (allUsers) {
-      setUsers(allUsers);
-      setSearch('');
-    }
-  }, [allUsers]);
-
-  const handleSearch = (query) => {
-    setSearch(query);
-    if (query === '' || query.length == 0 || query.trim().length == 0) {
-      setUsers(allUsers);
-      return;
-    }
-    query = query.trim();
-    const filteredUsers = allUsers.filter(
-      (user) =>
-        user.firstName?.toLowerCase().includes(query.toLowerCase()) ||
-        user.middleName?.toLowerCase().includes(query.toLowerCase()) ||
-        user.lastName?.toLowerCase().includes(query.toLowerCase())
-      // user.mediumOfStudy?.toLowerCase().includes(query.toLowerCase())
-      // user.mobile?.toLowerCase().includes(query.toLowerCase()) ||
-      // user.email?.toLowerCase().includes(query.toLowerCase()) ||
-      // user.school?.toLowerCase().includes(query.toLowerCase()) ||
-    );
-    setUsers(filteredUsers);
-  };
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen text-lg font-semibold">
-        Loading...
-      </div>
-    );
-  }
-  if (error) {
-    return <div className="text-red-500 text-center text-lg font-semibold">{error}</div>;
-  }
+  const navigate = useNavigate();
 
   return (
-    <div className="container mx-auto p-6">
-      <h2 className="text-3xl font-bold text-center mb-6">Admin Dashboard</h2>
-      {
-        <>
-          <div>
-            <Input
-              type="text"
-              placeholder="Search"
-              value={search}
-              onChange={(e) => handleSearch(e.target.value)}
-              className="w-full p-2 rounded-lg border border-gray-300"
-            />
+    <div className=" min-h-screen flex flex-col items-center p-2 sm:w-full">
+      <div className="w-full  max-w-3xl bg-white shadow-xl rounded-2xl p-8">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center mb-2">
+            <LayoutDashboard className="w-8 h-8 text-blue-600" />
           </div>
-        </>
-      }
-
-      {users && users.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-          {users &&
-            users.map((user) => (
-              <div key={user._id} className="flex justify-center">
-                <UserCard
-                  user={user}
-                  className="w-full max-w-xs shadow-lg rounded-lg overflow-hidden bg-white p-4"
-                />
-              </div>
-            ))}
+          <h2 className="text-3xl font-bold text-gray-800">Dashboard</h2>
+          <p className="text-sm text-gray-600 mt-1">
+            Welcome! Manage your users and their details efficiently.
+          </p>
         </div>
-      ) : (
-        <>
-          <div className="flex justify-center items-start min-h-screen text-lg font-semibold p-6">
-            No users found
-          </div>
-        </>
-      )}
+
+        {/* Top Illustration */}
+        <div className="flex justify-center mb-6">
+          <img
+            src={'/dashboardIllustration.png'}
+            alt="Dashboard Illustration"
+            className="w-48 sm:w-60 md:w-72"
+          />
+        </div>
+
+        {/* Buttons Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <Button
+            onClick={() => navigate('/dashboard/all-users')}
+            className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white w-full"
+          >
+            <Users className="w-5 h-5" />
+            View All Users
+          </Button>
+
+          <Button
+            onClick={() => navigate('/dashboard/birthdays')}
+            className="flex items-center justify-center gap-2 bg-pink-500 hover:bg-pink-600 text-white w-full"
+          >
+            <Cake className="w-5 h-5" />
+            Birthday Details
+          </Button>
+
+          <Button
+            onClick={() => navigate('/dashboard/add-registered-user')}
+            className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white w-full col-span-1 sm:col-span-2"
+          >
+            <UserPlus className="w-5 h-5" />
+            Add Registered User
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

@@ -11,8 +11,10 @@ const dashboardSlice = createSlice({
   name: 'dashboard',
   initialState,
   reducers: {
+    setAllUsers: (state, action) => {
+      state.allUsers = action.payload;
+    },
     setEditableUser: (state, action) => {
-    
       state.editableUser = action.payload;
     },
     setEditableUserAchievement: (state, action) => {
@@ -28,6 +30,7 @@ const dashboardSlice = createSlice({
 });
 
 export const {
+  setAllUsers,
   setEditableUser,
   setEditableUserAchievement,
   setEditableUserParent,

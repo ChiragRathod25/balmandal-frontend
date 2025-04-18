@@ -75,7 +75,7 @@ function TalentForm({ talent, closeForm, isUsedWithModal = false }) {
       }
     } else {
       if (talent) {
-        console.log('Talent data', data);
+      
         const response = await databaseService
           .updateTalent(data, talent?._id)
           .then((response) => response.data);

@@ -13,8 +13,12 @@ function ResetPassword() {
 
   const submit = async (data) => {
     setLoading(true);
-    console.log('data', data);
-    console.log('resetToken', resetToken);
+    setError(null);
+    if (data.password !== data.confirmPassword) {
+      setError('Password and confirm password do not match.');
+      setLoading(false);
+      return;
+    }
     databaseService
       .resetPassword(data, resetToken)
       .then((response)=>{

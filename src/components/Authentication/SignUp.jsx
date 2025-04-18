@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import databaseService from '../../services/database.services';
 import { login as authLogin } from '../../slices/userSlice/authSlice';
+import { m } from 'framer-motion';
 
 function Register() {
   const { register, handleSubmit } = useForm();
@@ -16,6 +17,14 @@ function Register() {
   if (authStatus) navigate('/');
 
   const submit = async (data) => {
+    setError(null);
+  
+    //check if password and confirm password are same
+    if (data.password !== data.confirmPassword) {
+      setError('Password and Confirm Password are not same');
+      return;
+    }
+
     try {
       const user = await databaseService.register(data).then((response) => response.data)
       if (user) {
@@ -55,7 +64,7 @@ function Register() {
             type="tel"
             label="Mobile Number"
             placeholder="Enter your mobile number"
-            {...register('mobile', { required: true })}
+            {...register('mobile', { required: true,minLength: 10, maxLength: 10 })}
             className="mb-4"
           />
           <Input

@@ -5,12 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Input, Button, Select } from '../..';
 import { updateUser } from '../../../slices/userSlice/authSlice';
 function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
-  
   const navigate = useNavigate();
   const userId = useSelector((state) => state.dashboard.editableUser?._id);
   const isAdmin = useSelector((state) => state.auth.userData.isAdmin);
   const adminUserId = useSelector((state) => state.auth.userData._id);
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm({
     defaultValues: {
       firstName: user.firstName || '',
@@ -24,9 +23,8 @@ function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
       mediumOfStudy: user.mediumOfStudy || '',
     },
   });
-  
-  const submit = async (data) => {
 
+  const submit = async (data) => {
     if (isAdmin && userId) {
       const response = await databaseService
         .updateUserDetails(data, userId)
@@ -44,7 +42,7 @@ function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
       const response = await databaseService
         .updateUserDetails(data)
         .then((response) => response.data)
-        .then((data)=>dispatch(updateUser(data)))
+        .then((data) => dispatch(updateUser(data)))
         .catch((error) => console.error('error while updating user details', error));
       if (response) {
         setEditing(false);
@@ -54,7 +52,7 @@ function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
   };
 
   const handleCancel = () => {
-    if (isAdmin && userId  && adminUserId !== user?._id) {
+    if (isAdmin && userId && adminUserId !== user?._id) {
       setEditing(false);
       navigate(`/dashboard/user/${userId}`);
     } else {
@@ -70,13 +68,13 @@ function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
           label="First Name"
           placeholder="First Name"
           className="w-full"
-          {...register('firstName')}
+          {...register('firstName', { required: true })}
         />
         <Input
           label="Last Name"
           placeholder="Last Name"
           className="w-full"
-          {...register('lastName')}
+          {...register('lastName', { required: true })}
         />
         <Input
           label="Middle Name"
@@ -84,8 +82,18 @@ function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
           className="w-full"
           {...register('middleName')}
         />
-        <Input label="Email" placeholder="Email" className="w-full" {...register('email')} />
-        <Input label="Mobile" placeholder="Mobile" className="w-full" {...register('mobile')} />
+        <Input
+          label="Email"
+          placeholder="Email"
+          className="w-full"
+          {...register('email', { required: true })}
+        />
+        <Input
+          label="Mobile Number"
+          placeholder="Mobile Number (10 digits)"
+          className="w-full"
+          {...register('mobile', { required: true, minLength: 10, maxLength: 10 })}
+        />
         <Input type="date" label="DOB" placeholder="DOB" className="w-full" {...register('DOB')} />
         <div className="flex justify-center w-full max-w-md mx-auto gap-4">
           <Select

@@ -48,6 +48,9 @@ import {
   About,
   ForgetPassword,
   ResetPassword,
+  AddRegisteredUser,
+  BirthdayDetails,
+  AllUsers
 } from './pages/index.js';
 import { AuthLayout } from './components';
 
@@ -230,6 +233,14 @@ const router = createBrowserRouter([
             ),
           },
           {
+            path: 'all-users',
+            element: (
+              <AuthLayout>
+                <AllUsers />
+              </AuthLayout>
+            ),
+          },
+          {
             path: 'user/:userId',
             element: (
               <AuthLayout>
@@ -237,6 +248,22 @@ const router = createBrowserRouter([
               </AuthLayout>
             ),
           },
+          {
+            path: 'add-registered-user',
+            element: (
+              <AuthLayout>
+                <AddRegisteredUser />
+              </AuthLayout>
+            ),
+          },
+          {
+            path:'birthdays',
+            element:(
+              <AuthLayout>
+                <BirthdayDetails />
+              </AuthLayout>
+            )
+          }
         ],
       },
       {
