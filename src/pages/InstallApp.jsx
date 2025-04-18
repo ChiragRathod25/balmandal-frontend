@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import log from '../utils/logger.js';
+import { clearDeferredPrompt, getDeferredPrompt,subscribeToPromptChange } from '../utils/installPromptStore.js';
 
 function InstallApp() {
   // PWA Install Prompt
@@ -7,16 +8,20 @@ function InstallApp() {
   const [showInstallButton, setShowInstallButton] = useState(false);
 
   useEffect(() => {
-    const handleBeforeInstallPrompt = (e) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
+    const prompt = getDeferredPrompt();
+    if (prompt) {
+      log.debug('Deferred Prompt:', prompt);
+      setDeferredPrompt(prompt);
       setShowInstallButton(true);
-    };
-
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    } 
+    const unsubscribe = subscribeToPromptChange((newPrompt) => {
+      log.debug('Prompt changed:', newPrompt);
+      setDeferredPrompt(newPrompt);
+      setShowInstallButton(!!newPrompt);
+    });
 
     return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      unsubscribe(); // Clean up listener
     };
   }, []);
 
@@ -27,6 +32,7 @@ function InstallApp() {
         if (choiceResult.outcome === 'accepted') {
           log.debug('PWA installed');
         }
+        clearDeferredPrompt();
         setDeferredPrompt(null);
         setShowInstallButton(false);
       });
@@ -41,13 +47,13 @@ function InstallApp() {
 
         {/* Description */}
         <p className="text-gray-600 mb-6">
-          Get the best experience by installing our App. 
+          Get the best experience by installing our App.
           <br />
           Enjoy fast access and offline support!
         </p>
 
         {/* Install Button (Only if available) */}
-        {showInstallButton  ? (
+        {showInstallButton ? (
           <button
             onClick={handleInstallClick}
             className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300"
@@ -55,7 +61,9 @@ function InstallApp() {
             Install App
           </button>
         ) : (
-          <p className="text-sm text-gray-500">App is already installed or not available for installation.</p>
+          <p className="text-sm text-gray-500">
+            App is already installed or not available for installation.
+          </p>
         )}
       </div>
     </div>

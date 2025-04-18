@@ -1,15 +1,15 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import databaseService from './services/database.services';
 import { useDispatch } from 'react-redux';
 import { login, logout } from './slices/userSlice/authSlice';
 import useScrollToTop from './utils/useScrollToTop';
 import MyToaster from './MyToaster';
-import { registerAndSubscribe } from './utils/subscriptionHelper';
-import config from './conf/config';
+import { registerAndSubscribe, regSw } from './utils/subscriptionHelper';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
 import { Layout } from './components';
+import { setDeferredPrompt } from './utils/installPromptStore';
 
 //App Component
 function App() {
@@ -18,16 +18,36 @@ function App() {
   useScrollToTop();
 
   useEffect(() => {
+
+    // set defferredPrompt status for InstallApp component
+    const handleBeforeInstallPrompt = (e) => {
+      console.log('Before Install Deferred Prompt:', e);
+      e.preventDefault();
+      // Store the event so it can be triggered later
+      setDeferredPrompt(e);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    // Cleanup function to remove the event listener
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
+
+  useEffect(() => {
+    // Register the service worker and subscribe to push notifications
+    registerAndSubscribe();
+
     const getCurrentUser = async () => {
       await databaseService
         .getCurrentuser()
         .then((response) => {
           if (response.data) {
             dispatch(login(response.data));
-            //if the user is logged in then only create service worker
-            setTimeout(() => {
-              registerAndSubscribe();
-            }, 10000);
+            // Check if the user is already subscribed to push notifications
+            registerAndSubscribe();
           } else {
             dispatch(logout());
           }
@@ -48,7 +68,6 @@ function App() {
           <MyToaster />
 
           <Outlet />
-
         </main>
       </Layout>
       <SpeedInsights />

@@ -65,6 +65,7 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
+  console.log('Service Worker Activated');
   const cacheWhitelist = ['static-cache-v1']; // Only keep the latest cache
 
   event.waitUntil(
@@ -88,8 +89,4 @@ self.addEventListener('fetch', (event) => {
       return response || fetch(event.request);
     })
   );
-});
-
-self.addEventListener('activate', (event) => {
-  console.log('Service Worker Activated');
 });

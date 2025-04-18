@@ -18,8 +18,11 @@ function UserCard({ user }) {
       {/* User Information */}
       <div className="text-center">
         <p className="text-xl font-semibold text-[#C30E59]">{user?.firstName} {user?.lastName}</p>
-        <p className="text-sm text-gray-600">Standard: <span className="font-medium">{user.std}</span></p>
-        <p className="text-sm text-gray-600">Medium of Study: <span className="font-medium">{user?.mediumOfStudy}</span></p>
+        <p className="text-sm text-gray-600">Standard: <span className="font-medium">
+          {user?.std || 'N/A'}
+          {user?.mediumOfStudy && `(${user?.mediumOfStudy})`}
+          </span></p>
+        
         <p className="text-sm text-gray-600">Mobile: <span className="font-medium">{user?.mobile}</span></p>
       </div>
 
