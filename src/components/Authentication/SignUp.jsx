@@ -93,6 +93,7 @@ function Register() {
             label="Confirm Password"
             placeholder="Confirm password"
             className="mb-4"
+            {...register('confirmPassword', { required: true })}
           />
           {error && <p className="text-red-600 mt-4 text-center">{error}</p>}
           <Button type="Submit" className="w-full mt-4">

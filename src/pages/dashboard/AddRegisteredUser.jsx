@@ -11,6 +11,11 @@ function AddRegisteredUser() {
     const navigate=useNavigate()
 
   const submit = async (data) => {
+    // Check if password and confirm password are the same
+    if (data.password !== data.confirmPassword) {
+      setError('Password and Confirm Password are not the same');
+      return;
+    }
      
     setLoading(true);
     setError(null);
@@ -67,7 +72,7 @@ function AddRegisteredUser() {
           <div 
           className="text-sm text-blue-500 cursor-pointer "
             onClick={() => {
-                setValue('mobile', '0000000000')
+                setValue('mobile', '0000000000');
             }}
             >
             Doesn't have mobile number
