@@ -56,13 +56,32 @@ self.addEventListener('install', (event) => {
       return cache.addAll([
         '/',
         '/index.html',
-        '/styles.css',
-        '/main.js',
-        '/icons/icon-192x192.png',
+        '/manifest.json',  
+        '/logo.png',
+        
       ]);
     })
   );
 });
+
+self.addEventListener('activate', (event) => {
+  const cacheWhitelist = ['static-cache-v1']; // Only keep the latest cache
+
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (!cacheWhitelist.includes(cacheName)) {
+            return caches.delete(cacheName); // Remove old caches
+          }
+        })
+      );
+    })
+  );
+});
+
+
+
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
