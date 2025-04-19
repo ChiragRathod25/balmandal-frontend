@@ -23,7 +23,7 @@ function AdminDashboard() {
         {/* Top Illustration */}
         <div className="flex justify-center mb-6">
           <img
-            src={'/dashboardIllustration.webp'}
+            src={'/dashboardIllustration.png'}
             alt="Dashboard Illustration"
             className="w-48 sm:w-60 md:w-72"
           />
