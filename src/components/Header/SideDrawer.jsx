@@ -69,7 +69,7 @@ const SideDrawer = ({ isOpen, onClose }) => {
             <img
               src={
                 user?.avatar ||
-                `/avatar.png` ||
+                `/avatar.webp` ||
                 'https://www.pngkey.com/png/full/115-1150420_avatar-png-pic-male-avatar-icon-png.png'
               }
               alt={user?.firstName}

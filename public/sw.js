@@ -57,7 +57,7 @@ self.addEventListener('install', (event) => {
         '/',
         '/index.html',
         '/manifest.json',  
-        '/logo.png',
+        '/logo.webp',
         
       ]);
     })

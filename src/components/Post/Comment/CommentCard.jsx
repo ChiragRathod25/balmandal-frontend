@@ -16,8 +16,8 @@ function CommentCard({ comment }) {
         <img
           src={
             isUserComment
-              ? authUser.avatar || '/avatar.png'
-              : comment?.user?.avatar || '/avatar.png'
+              ? authUser.avatar || '/avatar.webp'
+              : comment?.user?.avatar || '/avatar.webp'
           }
           alt="Profile"
           className="w-8 h-8 rounded-full object-cover"
