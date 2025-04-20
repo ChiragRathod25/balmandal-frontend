@@ -35,6 +35,22 @@ function Event() {
     }
   };
 
+  const formatToLocalDatetimeInput = (utcDateString) => {
+    if (!utcDateString) return '';
+    const date = new Date(utcDateString);
+
+    // Get local offset-adjusted values
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours() % 12 || 12).padStart(2, '0'); // Convert to 12-hour format
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+    const formattedTime = `${hours}:${minutes} ${ampm}`;
+
+    return `${year}-${month}-${day} | ${formattedTime}`;
+  };
+
   return (
     <QueryHandler queries={[{ loading, error }]}>
       {event && (
@@ -43,7 +59,7 @@ function Event() {
             <span className="text-blue-600">{event?.title}</span>
             <span
               className={`px-3 py-1 text-sm font-medium rounded-full shadow-md ${
-                event?.status === 'active'
+                event?.status === 'completed'
                   ? 'bg-green-100 text-green-600 border border-green-300'
                   : 'bg-red-100 text-red-600 border border-red-300'
               }`}
@@ -72,13 +88,11 @@ function Event() {
             )}
             <p>
               <span className="font-semibold">Start:</span>{' '}
-              {new Date(event?.startAt).toLocaleDateString()} |{' '}
-              {new Date(event?.startAt).toLocaleTimeString()}
+              {formatToLocalDatetimeInput(event?.startAt) || ''}
             </p>
             <p>
               <span className="font-semibold">End:</span>{' '}
-              {new Date(event?.endAt).toLocaleDateString()} |{' '}
-              {new Date(event?.endAt).toLocaleTimeString()}
+              {formatToLocalDatetimeInput(event?.endAt) || ''}
             </p>
             {isAdmin && (
               <p>

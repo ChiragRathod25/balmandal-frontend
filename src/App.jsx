@@ -21,7 +21,7 @@ function App() {
 
     // set defferredPrompt status for InstallApp component
     const handleBeforeInstallPrompt = (e) => {
-      console.log('Before Install Deferred Prompt:', e);
+      
       e.preventDefault();
       // Store the event so it can be triggered later
       setDeferredPrompt(e);

@@ -78,11 +78,11 @@ function Header() {
             Notifications
           </Link>
           <Link
-            to="/profile"
             onClick={() => setIsMenuOpen(false)}
+            to="/about"
             className="block md:inline hover:text-[#F2AE66] transition-all px-00 py-2"
           >
-            Profile
+            About
           </Link>
           <Link
             to="/app"
@@ -90,6 +90,13 @@ function Header() {
             className="block md:inline hover:text-[#F2AE66] transition-all px-00 py-2"
           >
             Install App
+          </Link>
+          <Link
+            to="/profile"
+            onClick={() => setIsMenuOpen(false)}
+            className="block md:inline hover:text-[#F2AE66] transition-all px-00 py-2"
+          >
+            Profile
           </Link>
           {isAdmin && (
             <Link

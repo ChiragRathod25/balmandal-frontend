@@ -5,7 +5,6 @@ import databaseService from '../../../services/database.services';
 import { useNavigate } from 'react-router-dom';
 
 function EventForm({ event }) {
-
   const { register, handleSubmit, watch, setValue } = useForm({
     defaultValues: {
       title: event?.title || '',
@@ -15,13 +14,28 @@ function EventForm({ event }) {
       venue: event?.venue || '',
       eventType: event?.eventType || '',
       media: null,
+      status: event?.status || 'upcoming',
     },
   });
 
+  function formatToLocalDatetimeInput(utcDateString) {
+    if (!utcDateString) return '';
+    const date = new Date(utcDateString);
+
+    // Get local offset-adjusted values
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  }
+
   useEffect(() => {
     if (event) {
-      const newStartAt = new Date(event?.startAt).toISOString().split('T').join(' ').substr(0, 19) || '';
-      const newEndAt = new Date(event?.endAt).toISOString().split('T').join(' ').substr(0, 19) || '';
+      const newStartAt = formatToLocalDatetimeInput(event?.startAt) || '';
+      const newEndAt = formatToLocalDatetimeInput(event?.endAt) || '';
       setValue('startAt', newStartAt);
       setValue('endAt', newEndAt);
     }
@@ -43,16 +57,18 @@ function EventForm({ event }) {
 
   const submit = async (data) => {
     data['cloudMediaFiles'] = JSON.stringify(FinalCloudFiles);
+   
     if (event) {
       const response = await databaseService.updateEvent(data, event._id).then((res) => res.data);
-      if (response) navigate('/event');
+     
+      if (response) navigate(`/event/${event?._id}`);
     } else {
       const response = await databaseService.addEvent(data).then((res) => res.data);
-      if (response) navigate('/event');
+      if (response) navigate(`/event/${response?._id}`);
     }
   };
 
-  const handleCancel = () => navigate('/event');
+  const handleCancel = () => navigate(`/event`);
 
   const setFinalCloudFiles = (files) => (FinalCloudFiles = files);
 
@@ -98,10 +114,16 @@ function EventForm({ event }) {
           label="Event Type"
           name="eventType"
           {...register('eventType', { required: true })}
-          options={["Bal Sabha", "Satsang Diksha","Samuh Puja","Other"]}
+          options={['Bal Sabha', 'Satsang Diksha', 'Samuh Puja', 'Other']}
           className="w-full"
         />
-
+        <Select
+          label="Status"
+          name="status"
+          {...register('status', { required: true })}
+          options={['upcoming', 'ongoing', 'completed', 'cancelled']}
+          className="w-full"
+        />
         <Input
           type="datetime-local"
           label="Start Date"
@@ -138,7 +160,11 @@ function EventForm({ event }) {
           <Button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
             {event ? 'Update' : 'Create'}
           </Button>
-          <Button type="button" onClick={handleCancel} className="bg-gray-500 text-white px-4 py-2 rounded">
+          <Button
+            type="button"
+            onClick={handleCancel}
+            className="bg-gray-500 text-white px-4 py-2 rounded"
+          >
             Cancel
           </Button>
         </div>

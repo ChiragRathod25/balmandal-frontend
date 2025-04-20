@@ -828,10 +828,11 @@ export class DatabaseService {
       }
     );
   }
-  async addEvent({ title, description, media, cloudMediaFiles, startAt, endAt, venue, eventType }) {
+  async addEvent({ title, description, media, cloudMediaFiles, startAt, endAt, venue, eventType,status }) {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('description', description);
+    formData.append('status', status);
     if (media && media.length > 0) {
       Array.from(media).forEach((img) => formData.append('media', img));
     }
@@ -861,11 +862,16 @@ export class DatabaseService {
       }
     );
   }
-  async updateEvent({ title, description, media, cloudMediaFiles, eventType }, eventId) {
+  async updateEvent({ title, description, media, cloudMediaFiles, eventType,startAt, endAt, venue,status }, eventId) {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('description', description);
     formData.append('eventType', eventType);
+    formData.append('startAt', startAt);
+    formData.append('endAt', endAt);
+    formData.append('venue', venue);
+    formData.append('status', status);
+    
     if (media && media.length > 0) {
       Array.from(media).forEach((img) => formData.append('media', img));
     }
