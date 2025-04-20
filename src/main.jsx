@@ -54,6 +54,16 @@ import {
 } from './pages/index.js';
 import { AuthLayout } from './components';
 
+// main.js or main.jsx
+if (!import.meta.hot) {
+  window.addEventListener('vite:preloadError', (event) => {
+    console.warn('Chunk load failed. Reloading page...');
+    window.location.reload();
+  });
+}
+
+
+
 const router = createBrowserRouter([
   {
     path: '/',

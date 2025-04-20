@@ -41,7 +41,7 @@ function Home() {
 
       {/* Hero Section */}
       <div className="relative w-full flex flex-col items-center text-center py-16 px-6 bg-gradient-to-b from-blue-200 to-gray-100 border-none">
-        <div className="absolute inset-0 bg-[url('/assets/hero-pattern.svg')] opacity-10"></div>
+        
         <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight relative z-10">
           Welcome to <br className="sm:hidden" />
           <span className="text-blue-600">APC Bal Mandal</span>
