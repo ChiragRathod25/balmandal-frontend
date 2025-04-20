@@ -12,25 +12,30 @@ function EventForm({ event }) {
       startAt: event?.startAt || '',
       endAt: event?.endAt || '',
       venue: event?.venue || '',
-      eventType: event?.eventType || '',
+      eventType: event?.eventType || 'Bal Sabha',
       media: null,
       status: event?.status || 'upcoming',
     },
   });
 
-  function formatToLocalDatetimeInput(utcDateString) {
+  const formatToLocalDatetimeInput = (utcDateString) => {
+    // convert the UTC date string to local datetime input format to be used in the input field
+    // e.g. 2025-04-20T10:50:00.000+00:00
+
     if (!utcDateString) return '';
-    const date = new Date(utcDateString);
-
-    // Get local offset-adjusted values
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-
-    return `${year}-${month}-${day}T${hours}:${minutes}`;
-  }
+    const date = new Date(utcDateString).toLocaleString('en-US', {
+      timeZone: 'Asia/Kolkata',
+      hour12: true,
+    });
+   
+    const [datePart, timePart] = date.split(', ');
+    const [month, day, year] = datePart.split('/');
+    const [time, period] = timePart.split(' ');
+    const [hours, minutes] = time.split(':');
+    const formattedHours = period === 'PM' && hours !== '12' ? parseInt(hours) + 12 : hours;
+    const formattedDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${formattedHours}:${minutes}`;
+    return formattedDate;
+  };
 
   useEffect(() => {
     if (event) {
@@ -58,9 +63,11 @@ function EventForm({ event }) {
   const submit = async (data) => {
     data['cloudMediaFiles'] = JSON.stringify(FinalCloudFiles);
    
+
     if (event) {
       const response = await databaseService.updateEvent(data, event._id).then((res) => res.data);
-     
+   
+
       if (response) navigate(`/event/${event?._id}`);
     } else {
       const response = await databaseService.addEvent(data).then((res) => res.data);
@@ -68,7 +75,13 @@ function EventForm({ event }) {
     }
   };
 
-  const handleCancel = () => navigate(`/event`);
+  const handleCancel = () => {
+    if (event) {
+      navigate(`/event/${event?._id}`);
+    } else {
+      navigate('/event');
+    }
+  };
 
   const setFinalCloudFiles = (files) => (FinalCloudFiles = files);
 

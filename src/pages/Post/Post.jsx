@@ -22,7 +22,6 @@ function Post() {
     try {
       const response = await databaseService.toggleIsApproved({ postId }).then((res) => res.data);
       if (response?.isApproved) {
-        
         navigate(`/post`);
       } else {
         console.error('Error updating post approval status.');
@@ -36,7 +35,6 @@ function Post() {
     try {
       const response = await databaseService.deletePost({ postId }).then((res) => res.data);
       if (response) {
-
         navigate(`/post`);
       }
     } catch (error) {
@@ -52,7 +50,7 @@ function Post() {
 
         {/* Post Meta Info */}
         <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
-          <span>📝 By: {post?.createdBy || 'Unknown'}</span>
+          {isAdmin && <span>📝 By: {post?.createdBy || 'Unknown'}</span>}
           <span>📅 {new Date(post?.createdAt).toLocaleString()}</span>
         </div>
 

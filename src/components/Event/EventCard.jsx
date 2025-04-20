@@ -22,6 +22,20 @@ function EventCard({ event }) {
         navigate(`/event/${event._id}`);
     }
 
+    const formatToLocalDatetimeInput = (utcDateString) => {
+      if (!utcDateString) return '';
+      const date = new Date(utcDateString).toLocaleString('en-US', {
+        timeZone: 'Asia/Kolkata',
+        hour12: true,
+      });
+  
+      const formattedDate = date.split(',')[0];
+      const formattedTime = date.split(',')[1].trim();
+      const formattedDateTime = `${formattedDate} ${formattedTime}`;
+      return formattedDateTime; // Return in the format YYYY-MM-DDTHH:MM AM/PM
+    };
+
+
     return (
     <div
       key={event._id}
@@ -39,8 +53,11 @@ function EventCard({ event }) {
         <div>
           <h3 className="text-lg font-semibold">{event.title}</h3>
           <p className="text-sm text-gray-500">
-            {new Date(event.startAt).toLocaleDateString()}{' '}
-            {new Date(event.startAt).toLocaleTimeString()}
+            {
+              event.startAt && event.endAt
+                ? `${formatToLocalDatetimeInput(event.startAt)}`
+                : 'Date not available'
+            }
           </p>
           <p className="text-sm text-gray-500">{event.venue}</p>
         </div>
