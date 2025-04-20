@@ -23,17 +23,26 @@ function EventCard({ event }) {
     }
 
     const formatToLocalDatetimeInput = (utcDateString) => {
-      if (!utcDateString) return '';
-      const date = new Date(utcDateString).toLocaleString('en-US', {
-        timeZone: 'Asia/Kolkata',
-        hour12: true,
-      });
-  
-      const formattedDate = date.split(',')[0];
-      const formattedTime = date.split(',')[1].trim();
-      const formattedDateTime = `${formattedDate} ${formattedTime}`;
-      return formattedDateTime; // Return in the format YYYY-MM-DDTHH:MM AM/PM
-    };
+    if (!utcDateString) return '';
+
+    // Event utcDateString 2025-04-22T20:30:00.000Z
+    // Convert to local date
+    const date=utcDateString.split('T')[0];
+    const formattedDate = date.split('-').reverse().join('/');
+    const time = utcDateString.split('T')[1];
+
+    // convert time to 12 hour format
+    const [hours, minutes] = time.split(':');
+    const hours12 = (hours % 12) || 12; // Convert to 12-hour format
+    const ampm = hours >= 12 ? 'PM' : 'AM'; // Determine AM/PM
+    const formattedTime = `${hours12}:${minutes} ${ampm}`;
+
+    const formattedDateTime = `${formattedDate} ${formattedTime}`;
+    
+    return formattedDateTime;
+    
+  }
+
 
 
     return (

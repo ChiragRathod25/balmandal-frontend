@@ -20,21 +20,11 @@ function EventForm({ event }) {
 
   const formatToLocalDatetimeInput = (utcDateString) => {
     // convert the UTC date string to local datetime input format to be used in the input field
-    // e.g. 2025-04-20T10:50:00.000+00:00
+    // e.g. utcDateString 2025-04-22T20:30:00.000Z
+    if(!utcDateString) return '';
+    const formattedDateTime= utcDateString.split('T')[0] + 'T' + utcDateString.split('T')[1].split('.')[0];
+    return  formattedDateTime;
 
-    if (!utcDateString) return '';
-    const date = new Date(utcDateString).toLocaleString('en-US', {
-      timeZone: 'Asia/Kolkata',
-      hour12: true,
-    });
-   
-    const [datePart, timePart] = date.split(', ');
-    const [month, day, year] = datePart.split('/');
-    const [time, period] = timePart.split(' ');
-    const [hours, minutes] = time.split(':');
-    const formattedHours = period === 'PM' && hours !== '12' ? parseInt(hours) + 12 : hours;
-    const formattedDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${formattedHours}:${minutes}`;
-    return formattedDate;
   };
 
   useEffect(() => {
