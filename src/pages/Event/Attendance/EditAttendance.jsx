@@ -1,8 +1,8 @@
-import { AttendanceForm } from '../../../components'
+import { AttendanceForm } from '../../../components/index.js';
 import { useParams } from 'react-router-dom';
 import { useCallback } from 'react';
-import databaseService from '../../../services/database.services';
-import useCustomReactQuery from '../../../utils/useCustomReactQuery';
+import databaseService from '../../../services/database.services.js';
+import useCustomReactQuery from '../../../utils/useCustomReactQuery.js';
 
 function EditAttendance() {
     const { eventId } = useParams();

@@ -1,9 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import databaseService from '../../services/database.services';
-import { TalentForm } from '../../components';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
-import { QueryHandler } from '../../components';
+import databaseService from '../../services/database.services.js';
+import { TalentForm,QueryHandler } from '../../components/index.js';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
 
 function EditTalent() {
   const { talentId } = useParams();

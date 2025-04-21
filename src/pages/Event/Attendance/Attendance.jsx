@@ -1,5 +1,5 @@
 // this will display attendance of one event || display users list of one event || Registered + Unregistered users list of one event
-import { EventAttendance, EventUnregisteredAttendace } from '../../../components';
+import { EventAttendance, EventUnregisteredAttendace } from '../../../components/index.js';
 
 function Attendance() {
   return (

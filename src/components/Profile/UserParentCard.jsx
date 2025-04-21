@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+
 function UserParentCard({ parent, hanleClick, isUsedWithModal = false }) {
   const navigate = useNavigate();
   const handleCardClick = () => {

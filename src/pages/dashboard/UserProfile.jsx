@@ -1,21 +1,21 @@
-import React, { useEffect, useCallback } from "react";
-import { useParams } from "react-router-dom";
-import databaseService from "../../services/database.services";
+import React, { useEffect, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
+import databaseService from '../../services/database.services.js';
 import {
   UserDetails,
   UserAchievement,
   UserParent,
   UserTalent,
   UserAttendanceDashboard,
-} from "../../components";
-import useCustomReactQuery from "../../utils/useCustomReactQuery";
-import { useDispatch } from "react-redux";
+} from '../../components/index.js';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
+import { useDispatch } from 'react-redux';
 import {
   setEditableUser,
   setEditableUserAchievement,
   setEditableUserParent,
   setEditableUserTalent,
-} from "../../slices/dashboard/dashboardSlice";
+} from '../../slices/dashboard/dashboardSlice.js';
 
 function UserData() {
   const { userId } = useParams();
@@ -57,7 +57,7 @@ function UserData() {
 
   return (
     <>
-      <UserDetails/>
+      <UserDetails />
       <hr className="border-t-2 border-gray-300 mx-auto w-11/12" />
       <UserAchievement />
       <hr className="border-t-2 border-gray-300 mx-auto w-11/12" />

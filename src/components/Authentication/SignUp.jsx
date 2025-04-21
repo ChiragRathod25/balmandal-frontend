@@ -1,11 +1,10 @@
 import  { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Input, Button } from '../../components';
+import { Input, Button } from '../../components/index.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import databaseService from '../../services/database.services';
-import { login as authLogin } from '../../slices/userSlice/authSlice';
-import { m } from 'framer-motion';
+import databaseService from '../../services/database.services.js';
+import { login as authLogin } from '../../slices/userSlice/authSlice.js';
 
 function Register() {
   const { register, handleSubmit } = useForm();

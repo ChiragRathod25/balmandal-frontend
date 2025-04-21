@@ -1,4 +1,4 @@
-import { NotificationForm } from '../../components/index';
+import { NotificationForm } from '../../components/index.js';
 
 function AddNotification() {
   return (

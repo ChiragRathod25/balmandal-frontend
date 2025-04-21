@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
-import databaseService from '../../services/database.services';
+import databaseService from '../../services/database.services.js';
 import { useSelector } from 'react-redux';
-import { Button, UserAchievementCard } from '../../components';
+import { Button, UserAchievementCard,QueryHandler } from '../../components/index.js';
 import { useNavigate } from 'react-router-dom';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
-import { QueryHandler } from '../../components';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
 
 function AllAchievement() {
   const [achievements, setAchievements] = useState(null);

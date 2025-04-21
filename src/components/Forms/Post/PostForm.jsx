@@ -1,8 +1,8 @@
 import React,{useEffect,useCallback} from 'react';
-import { RTE, Input, Select, Button } from '../../';
+import { RTE, Input,  Button } from '../../index.js';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import databaseService from '../../../services/database.services';
+import databaseService from '../../../services/database.services.js';
 
 function PostForm({ post }) {
   const { handleSubmit, register, getValues, control,watch,setValue} = useForm({

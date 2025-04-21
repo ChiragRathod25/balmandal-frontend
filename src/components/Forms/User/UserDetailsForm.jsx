@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import databaseService from '../../../services/database.services';
+import databaseService from '../../../services/database.services.js';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { Input, Button, Select } from '../..';
-import { updateUser } from '../../../slices/userSlice/authSlice';
+import { Input, Button, Select } from '../../index.js';
+import { updateUser } from '../../../slices/userSlice/authSlice.js';
+
 function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
   const navigate = useNavigate();
   const userId = useSelector((state) => state.dashboard.editableUser?._id);

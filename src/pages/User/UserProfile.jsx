@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
-import UserDetails from './UserDetails';
-
+import { useState } from 'react';
+import UserDetails from './UserDetails.jsx';
 import { useSelector } from 'react-redux';
-import { Button, UserDetailsForm, UserAttendanceProfile } from '../../components';
-import { useNavigate } from 'react-router-dom';
+import { UserDetailsForm, UserAttendanceProfile } from '../../components/index.js';
 
 function UserProfile() {
   const [isEditing, setEditing] = useState(false);

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import databaseService from '../../../services/database.services';
-import { Button, Input, FileUploader, CloudFilesManager, Select } from '../../';
+import databaseService from '../../../services/database.services.js';
+import { Button, Input, FileUploader, CloudFilesManager, Select } from '../../index.js';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setEditableUserTalent } from '../../../slices/dashboard/dashboardSlice';
+import { setEditableUserTalent } from '../../../slices/dashboard/dashboardSlice.js';
 import log from '../../../utils/logger.js';
 
 function TalentForm({ talent, closeForm, isUsedWithModal = false }) {
@@ -75,7 +75,6 @@ function TalentForm({ talent, closeForm, isUsedWithModal = false }) {
       }
     } else {
       if (talent) {
-      
         const response = await databaseService
           .updateTalent(data, talent?._id)
           .then((response) => response.data);

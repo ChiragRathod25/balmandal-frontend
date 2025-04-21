@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Input, Button } from '../../components';
-import databaseService from '../../services/database.services';
-import { login } from '../../slices/userSlice/authSlice';
-import { registerAndSubscribe } from '../../utils/subscriptionHelper';
+import { Input, Button } from '../../components/index.js';
+import databaseService from '../../services/database.services.js';
+import { login } from '../../slices/userSlice/authSlice.js';
+import { registerAndSubscribe } from '../../utils/subscriptionHelper.js';
 import log from '../../utils/logger.js';
+
 function Login() {
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState(null);

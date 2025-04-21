@@ -1,9 +1,9 @@
 import  { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import databaseService from "../../services/database.services";
-import useCustomReactQuery from "../../utils/useCustomReactQuery";
-import { Button, PostCard } from "../../components";
+import databaseService from "../../services/database.services.js";
+import useCustomReactQuery from "../../utils/useCustomReactQuery.js";
+import { Button, PostCard } from "../../components/index.js";
 
 function AllPost() {
   const fetchAllPosts = useCallback(() => databaseService.getPosts(), []);

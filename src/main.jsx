@@ -52,7 +52,7 @@ import {
   BirthdayDetails,
   AllUsers
 } from './pages/index.js';
-import { AuthLayout } from './components';
+import { AuthLayout } from './components/index.js';
 
 // main.js or main.jsx
 if (!import.meta.hot) {

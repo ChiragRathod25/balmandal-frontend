@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import databaseService from '../../services/database.services';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
-import { Button, QueryHandler, EventCard } from '../../components';
+import databaseService from '../../services/database.services.js';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
+import { Button, QueryHandler, EventCard } from '../../components/index.js';
 import { useSelector } from 'react-redux';
 
 function AllEvent() {

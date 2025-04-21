@@ -1,4 +1,4 @@
-import { EventForm, Container } from '../../components';
+import { EventForm, Container } from '../../components/index.js';
 
 function AddEvent() {
   return (

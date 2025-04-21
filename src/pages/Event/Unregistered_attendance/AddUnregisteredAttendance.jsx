@@ -1,4 +1,4 @@
-import { UnregisteredAttendanceForm } from '../../../components';
+import { UnregisteredAttendanceForm } from '../../../components/index.js';
 
 function AddUnregisteredAttendance() {
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Input, Select, Button } from '../../';
-import databaseService from '../../../services/database.services';
-import { useNavigate, useParams } from 'react-router-dom';
-import { setEditableUserParent } from '../../../slices/dashboard/dashboardSlice';
+import { Input, Select, Button } from '../../index.js';
+import databaseService from '../../../services/database.services.js';
+import { useNavigate } from 'react-router-dom';
+import { setEditableUserParent } from '../../../slices/dashboard/dashboardSlice.js';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ParentForm({ parent, isUsedWithModal = false, closeForm}) {

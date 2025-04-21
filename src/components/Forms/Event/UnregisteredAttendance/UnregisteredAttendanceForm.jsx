@@ -1,6 +1,6 @@
 import React from 'react';
-import { Input, Button, Select } from '../../../index';
-import databaseService from '../../../../services/database.services';
+import { Input, Button, Select } from '../../../index.js';
+import databaseService from '../../../../services/database.services.js';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 

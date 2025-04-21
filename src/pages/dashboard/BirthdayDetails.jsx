@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Button, Select } from '../../components';
-import databaseService from '../../services/database.services';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
+import { Button, Select } from '../../components/index.js';
+import databaseService from '../../services/database.services.js';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
 import { useDispatch } from 'react-redux';
-import { setAllUsers } from '../../slices/dashboard/dashboardSlice';
+import { setAllUsers } from '../../slices/dashboard/dashboardSlice.js';
 import { FaBirthdayCake } from "react-icons/fa";
 import { IoCalendarOutline } from "react-icons/io5";
 
@@ -119,12 +119,12 @@ function BirthdayDetails() {
             />
             </div>
   
-          <button
+          <Button
             onClick={handleDateFilter}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md transition duration-200 mt-2"
+            className="text-white px-4 py-2 rounded-lg shadow-md transition mt-4"            
           >
             Search
-          </button>
+          </Button>
         </div>
   
         {/* Results Section */}

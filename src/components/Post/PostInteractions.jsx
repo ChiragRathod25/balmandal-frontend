@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
-import { CommentContainer, QueryHandler } from '../index';
-import databaseService from '../../services/database.services';
+import { CommentContainer, QueryHandler } from '../index.js';
+import databaseService from '../../services/database.services.js';
 import { useParams } from 'react-router-dom';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
 import { useSelector } from 'react-redux';
 
 function PostInteractions() {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal } from './index';
+import { Modal } from './index.js';
 import log from '../utils/logger.js';
 
 function CloudFilesManager({ cloudFiles, handleDeleteFile }) {

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Input, Button, FileUploader,CloudFilesManager } from '../../index';
-import databaseService from '../../../services/database.services';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Input, Button, FileUploader,CloudFilesManager } from '../../index.js';
+import databaseService from '../../../services/database.services.js';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setEditableUserAchievement } from '../../../slices/dashboard/dashboardSlice';
+import { setEditableUserAchievement } from '../../../slices/dashboard/dashboardSlice.js';
 import log from '../../../utils/logger.js';
 
 
@@ -21,7 +21,7 @@ function AchievementForm({ achievement, isUsedWithModal = false, closeForm }) {
   });
   const navigate = useNavigate();
 
-  const [cloudFiles, setCloudFiles] = React.useState(achievement?.media || []);
+  const [cloudFiles, setCloudFiles] = useState(achievement?.media || []);
 
   useEffect(() => {
     log.debug('Rerendering for cloudFiles file manager', cloudFiles);

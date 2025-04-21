@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { X, Pencil, Trash } from 'lucide-react';
 import { TalentForm, Button, Modal, UserTalentCard } from '../index.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { setEditableUserTalent } from '../../slices/dashboard/dashboardSlice.js';
 import databaseService from '../../services/database.services.js';
-import { Talent } from '../../pages/index';
+import { Talent } from '../../pages/index.js';
 
 function UserTalent() {
   const userId = useSelector((state) => state.dashboard.editableUser?._id);

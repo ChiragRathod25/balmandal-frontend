@@ -1,6 +1,6 @@
 import log from 'loglevel';
-import config from '../conf/config';
-import databaseService from '../services/database.services';
+import config from '../conf/config.js';
+import databaseService from '../services/database.services.js';
 
 async function sendToServer(level, message) {
   if (level === 'warn' || level === 'error') {

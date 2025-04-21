@@ -1,6 +1,6 @@
 import React from 'react'
+import {SignUp as SignUpComponent} from '../components/index.js'
 
-import {SignUp as SignUpComponent} from '../components'
 function Register() {
   return (
     <>

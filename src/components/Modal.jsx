@@ -1,5 +1,5 @@
 import  {useEffect } from 'react';
-import { Button } from './';
+import { Button } from './index.js';
 
 function Modal({ isOpen, onClose, children, title }) {
   // disable scrolling

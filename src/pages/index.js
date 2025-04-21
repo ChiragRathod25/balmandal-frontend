@@ -1,58 +1,56 @@
-import AddAchievement from './Achievement/AddAchievement';
-import EditAchievement from './Achievement/EditAchievement';
-import AlltAchievement from './Achievement/AllAchievement';
-import Achievement from './Achievement/Achievement';
+import AddAchievement from './Achievement/AddAchievement.jsx';
+import EditAchievement from './Achievement/EditAchievement.jsx';
+import AlltAchievement from './Achievement/AllAchievement.jsx';
+import Achievement from './Achievement/Achievement.jsx';
 
-import AddTalent from './Talent/AddTalent';
-import EditTalent from './Talent/EditTalent';
-import AllTalent from './Talent/AllTalent';
-import Talent from './Talent/Talent';
+import AddTalent from './Talent/AddTalent.jsx';
+import EditTalent from './Talent/EditTalent.jsx';
+import AllTalent from './Talent/AllTalent.jsx';
+import Talent from './Talent/Talent.jsx';
 
-import AddParent from './Parent/AddParent';
-import EditParent from './Parent/EditParent';
-import AllParent from './Parent/AllParent';
-import Parent from './Parent/Parent';
+import AddParent from './Parent/AddParent.jsx';
+import EditParent from './Parent/EditParent.jsx';
+import AllParent from './Parent/AllParent.jsx';
+import Parent from './Parent/Parent.jsx';
 
-import Home from './Home';
-import Login from './Login';
-import Register from './Register';
-import Logout from './Logout';
-import ForgetPassword from './ForgetPassword';
-import ResetPassword from './ResetPassword';
+import Home from './Home.jsx';
+import Login from './Login.jsx';
+import Register from './Register.jsx';
+import Logout from './Logout.jsx';
+import ForgetPassword from './ForgetPassword.jsx';
+import ResetPassword from './ResetPassword.jsx';
 
-import AdminDashboard from './dashboard/AdminDashboard';
-import UserData from './dashboard/UserProfile';
-import UserDetails from './User/UserDetails';
-import UserProfile from './User/UserProfile';
-import AllUsers from './dashboard/AllUsers';
-import AddRegisteredUser from './dashboard/AddRegisteredUser';
-import BirthdayDetails from './dashboard/BirthdayDetails';
+import AdminDashboard from './dashboard/AdminDashboard.jsx';
+import UserData from './dashboard/UserProfile.jsx';
+import UserDetails from './User/UserDetails.jsx';
+import UserProfile from './User/UserProfile.jsx';
+import AllUsers from './dashboard/AllUsers.jsx';
+import AddRegisteredUser from './dashboard/AddRegisteredUser.jsx';
+import BirthdayDetails from './dashboard/BirthdayDetails.jsx';
 
+import AddEvent from './Event/AddEvent.jsx';
+import EditEvent from './Event/EditEvent.jsx';
+import AllEvent from './Event/AllEvent.jsx';
+import Event from './Event/Event.jsx';
 
-import AddEvent from './Event/AddEvent';
-import EditEvent from './Event/EditEvent';
-import AllEvent from './Event/AllEvent';
-import Event from './Event/Event';
+import Notification from './Notification/Notification.jsx';
+import AllNotification from './Notification/AllNotifications.jsx';
+import AddNotification from './Notification/AddNotification.jsx';
 
-import Notification from './Notification/Notification';
-import AllNotification from './Notification/AllNotifications';
-import AddNotification from './Notification/AddNotification';
+import EditAttendance from './Event/Attendance/EditAttendance.jsx';
+import Attendance from './Event/Attendance/Attendance.jsx';
+import AddUnregisteredAttendance from './Event/Unregistered_attendance/AddUnregisteredAttendance.jsx';
+import UnregisteredAttendance from './Event/Unregistered_attendance/UnregisteredAttendance.jsx';
+import EditUnregisteredAttendance from './Event/Unregistered_attendance/EditUnregisteredAttendance.jsx';
 
-import EditAttendance from './Event/Attendance/EditAttendance';
-import Attendance from './Event/Attendance/Attendance';
-import AddUnregisteredAttendance from './Event/Unregistered_attendance/AddUnregisteredAttendance';
-import UnregisteredAttendance from './Event/Unregistered_attendance/UnregisteredAttendance';
-import EditUnregisteredAttendance from './Event/Unregistered_attendance/EditUnregisteredAttendance';
-
-import AddPost from './Post/AddPost';
-import AllPost from './Post/AllPost';
-import EditPost from './Post/EditPost';
-import Post from './Post/Post';
-import UserPosts from './Post/UserPosts';
-import PendingApproval from './Post/PendingApproval';
-import InstallApp from './InstallApp';
-import About from './About';
-
+import AddPost from './Post/AddPost.jsx';
+import AllPost from './Post/AllPost.jsx';
+import EditPost from './Post/EditPost.jsx';
+import Post from './Post/Post.jsx';
+import UserPosts from './Post/UserPosts.jsx';
+import PendingApproval from './Post/PendingApproval.jsx';
+import InstallApp from './InstallApp.jsx';
+import About from './About.jsx';
 
 export {
   AddAchievement,
@@ -92,12 +90,12 @@ export {
   AllPost,
   EditPost,
   Post,
-  UserPosts, 
+  UserPosts,
   PendingApproval,
   InstallApp,
   About,
   ForgetPassword,
   AddRegisteredUser,
   BirthdayDetails,
-  AllUsers
+  AllUsers,
 };

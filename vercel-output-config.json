@@ -1,0 +1,13 @@
+{
+  "routes": [
+    { "handle": "filesystem" },
+    {
+      "src": "/assets/.*\\.js$",
+      "headers": { "content-type": "application/javascript" }
+    },
+    { "src": "/.*\\.js$",
+      "headers": { "content-type": "application/javascript" }
+    },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}

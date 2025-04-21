@@ -1,10 +1,8 @@
 import  { useCallback, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import databaseService from '../../services/database.services';
-import { Button } from '../../components';
-import { QueryHandler } from '../../components';
-import useCustomeReactQuery from '../../utils/useCustomReactQuery';
-import { FilesDisplayHelper } from '../../components';
+import databaseService from '../../services/database.services.js';
+import { Button,QueryHandler,FilesDisplayHelper } from '../../components/index.js';
+import useCustomeReactQuery from '../../utils/useCustomReactQuery.js';
 
 function Achievement({ id ,isUsedWithModal=false}) {
   // here id is a achievementId passed from the admin page to get the achievement details without using the useParams hook

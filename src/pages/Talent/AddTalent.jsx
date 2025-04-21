@@ -1,4 +1,4 @@
-import { TalentForm, Container } from '../../components';
+import { TalentForm, Container } from '../../components/index.js';
 
 function AddTalent() {
   return (

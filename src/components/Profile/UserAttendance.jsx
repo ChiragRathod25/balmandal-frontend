@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
-import { UserAttendanceCard } from '..';
+import { UserAttendanceCard } from '../index.js';
 import { useSelector } from 'react-redux';
-import databaseService from '../../services/database.services';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
+import databaseService from '../../services/database.services.js';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
 
 function UserAttendance() {
   const userId = useSelector((state) => state.auth.userData._id);

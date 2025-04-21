@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Input } from '../../../';
-import databaseService from '../../../../services/database.services';
+import { Button, Input } from '../../../index.js';
+import databaseService from '../../../../services/database.services.js';
 import { useNavigate, useParams } from 'react-router-dom';
+
 function AttendanceForm({ attendanceList }) {
   const { eventId } = useParams();
   // here attendance is an array of objects which has name, status, and id

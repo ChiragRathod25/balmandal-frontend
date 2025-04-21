@@ -1,4 +1,4 @@
-import { Container, ParentForm } from '../../components';
+import { Container, ParentForm } from '../../components/index.js';
 
 function AddParent() {
     const role = new URLSearchParams(window.location.search).get('role');

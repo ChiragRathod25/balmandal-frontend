@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Input, Button } from '../../components';
-import databaseService from '../../services/database.services';
+import { Input, Button } from '../../components/index.js';
+import databaseService from '../../services/database.services.js';
 
 function ResetPassword() {
   const { resetToken } = useParams();

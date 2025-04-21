@@ -1,6 +1,7 @@
 import  { useState } from "react";
 import Parse from "html-react-parser";
 import { Link } from "react-router-dom";
+
 function PostCard({ post }) {
   const [expanded, setExpanded] = useState(false);
   const previewLength = 120; // Character limit for preview text

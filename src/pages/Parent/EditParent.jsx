@@ -1,8 +1,8 @@
 import  { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import databaseService from '../../services/database.services';
-import { ParentForm, QueryHandler } from '../../components';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
+import databaseService from '../../services/database.services.js';
+import { ParentForm, QueryHandler } from '../../components/index.js';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
 
 function EditParent() {
   const { parentId } = useParams();

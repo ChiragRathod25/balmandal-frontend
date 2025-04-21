@@ -1,6 +1,7 @@
-import config from '../conf/config';
-import databaseService from '../services/database.services';
+import config from '../conf/config.js';
+import databaseService from '../services/database.services.js';
 import log from './logger.js';
+
 export async function regSw() {
   try {
     if ('serviceWorker' in navigator) {

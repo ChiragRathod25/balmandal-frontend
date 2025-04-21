@@ -1,5 +1,5 @@
-import axiosInstace from '../utils/axios';
-import { handleApiRequest } from '../utils/apiHelper';
+import axiosInstace from '../utils/axios.js';
+import { handleApiRequest } from '../utils/apiHelper.js';
 import toast from 'react-hot-toast';
 
 export class DatabaseService {

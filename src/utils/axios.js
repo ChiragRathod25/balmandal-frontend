@@ -1,7 +1,8 @@
 import axios from 'axios';
-import config from '../conf/config';
-import databaseService from "../services/database.services";
+import config from '../conf/config.js';
+import databaseService from "../services/database.services.js";
 import log from './logger.js';
+
 const axiosInstance = axios.create({
   baseURL: config.apiURL,
   withCredentials: true,

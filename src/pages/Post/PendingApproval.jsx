@@ -1,9 +1,9 @@
 import  { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import databaseService from "../../services/database.services";
-import useCustomReactQuery from "../../utils/useCustomReactQuery";
-import { PostCard } from "../../components";
+import databaseService from "../../services/database.services.js";
+import useCustomReactQuery from "../../utils/useCustomReactQuery.js";
+import { PostCard } from "../../components/index.js";
 
 function PendingApproval() {
   const isAdmin = useSelector((state) => state.auth.userData?.isAdmin);

@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { QueryHandler, Button, FilesDisplayHelper } from '../../components';
-import databaseService from '../../services/database.services';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
+import { QueryHandler, Button, FilesDisplayHelper } from '../../components/index.js';
+import databaseService from '../../services/database.services.js';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
 import { useSelector } from 'react-redux';
 
 function Event() {

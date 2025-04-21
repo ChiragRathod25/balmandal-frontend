@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Button } from '../components';
+import { Button,ImageCarousel } from '../components/index.js';
 import { useNavigate } from 'react-router-dom';
-import { ImageCarousel } from '../components';
+
 function Home() {
   const authStatus = useSelector((store) => store.auth.status);
   const isAdmin = useSelector((store) => store.auth.userData?.isAdmin);

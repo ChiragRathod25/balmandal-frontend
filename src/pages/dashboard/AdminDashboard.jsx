@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../components';
+import { Button } from '../../components/index.js';
 import { Users, Cake, UserPlus, LayoutDashboard } from 'lucide-react';
 
 

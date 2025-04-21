@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Input, Button, FileUploader, CloudFilesManager, Select } from '../../index';
-import databaseService from '../../../services/database.services';
+import { Input, Button, FileUploader, CloudFilesManager, Select } from '../../index.js';
+import databaseService from '../../../services/database.services.js';
 import { useNavigate } from 'react-router-dom';
 
 function EventForm({ event }) {
@@ -21,10 +21,10 @@ function EventForm({ event }) {
   const formatToLocalDatetimeInput = (utcDateString) => {
     // convert the UTC date string to local datetime input format to be used in the input field
     // e.g. utcDateString 2025-04-22T20:30:00.000Z
-    if(!utcDateString) return '';
-    const formattedDateTime= utcDateString.split('T')[0] + 'T' + utcDateString.split('T')[1].split('.')[0];
-    return  formattedDateTime;
-
+    if (!utcDateString) return '';
+    const formattedDateTime =
+      utcDateString.split('T')[0] + 'T' + utcDateString.split('T')[1].split('.')[0];
+    return formattedDateTime;
   };
 
   useEffect(() => {
@@ -52,11 +52,9 @@ function EventForm({ event }) {
 
   const submit = async (data) => {
     data['cloudMediaFiles'] = JSON.stringify(FinalCloudFiles);
-   
 
     if (event) {
       const response = await databaseService.updateEvent(data, event._id).then((res) => res.data);
-   
 
       if (response) navigate(`/event/${event?._id}`);
     } else {

@@ -1,5 +1,6 @@
 import React from 'react'
-import { ResetPassword  as ResetPasswordComponent } from '../components'
+import { ResetPassword  as ResetPasswordComponent } from '../components/index.js'
+
 function ResetPassword() {
   return (
     <ResetPasswordComponent/>

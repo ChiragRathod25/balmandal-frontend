@@ -1,7 +1,7 @@
 import React from 'react';
-import { Input, Button } from '../../components';
-import { get, useForm } from 'react-hook-form';
-import databaseService from '../../services/database.services';
+import { Input, Button } from '../../components/index.js';
+import {  useForm } from 'react-hook-form';
+import databaseService from '../../services/database.services.js';
 import { useNavigate } from 'react-router-dom';
 
 function AddRegisteredUser() {

@@ -1,9 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import databaseService from '../../../services/database.services';
-import { Input, Button, FileUploader, Select } from '../../index';
-import config from '../../../conf/config';
+import databaseService from '../../../services/database.services.js';
+import { Input, Button, FileUploader, Select } from '../../index.js';
 
 
 function NotificationForm() {

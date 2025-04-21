@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
-import databaseService from '../../services/database.services';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
-import { UserCard, Input } from '../../components';
+import databaseService from '../../services/database.services.js';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
+import { UserCard, Input } from '../../components/index.js';
 import { useDispatch } from 'react-redux';
-import { setAllUsers } from '../../slices/dashboard/dashboardSlice';
+import { setAllUsers } from '../../slices/dashboard/dashboardSlice.js';
 
 function AllUsers() {
   const fetchAllUsers = useCallback(() => databaseService.fetchAllUsers(), []);

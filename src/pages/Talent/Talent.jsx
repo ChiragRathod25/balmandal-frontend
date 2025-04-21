@@ -1,10 +1,9 @@
 import { useCallback, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import databaseService from '../../services/database.services';
-import { Button } from '../../components';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
-import { QueryHandler } from '../../components';
-import { FilesDisplayHelper } from '../../components';
+import databaseService from '../../services/database.services.js';
+import { Button,QueryHandler,FilesDisplayHelper} from '../../components/index.js';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
+
 
 function Talent({ id, isUsedWithModal = false }) {
   // here id is a talentId passed from the admin page to get the talent details without using the useParams hook

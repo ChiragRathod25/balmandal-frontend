@@ -2,9 +2,9 @@ import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Parse from 'html-react-parser';
-import databaseService from '../../services/database.services';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
-import { QueryHandler, Button, PostInteractions } from '../../components';
+import databaseService from '../../services/database.services.js';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
+import { QueryHandler, Button, PostInteractions } from '../../components/index.js';
 
 function Post() {
   const isAdmin = useSelector((state) => state.auth.userData?.isAdmin);

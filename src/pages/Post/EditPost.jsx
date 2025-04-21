@@ -1,8 +1,8 @@
 import  { useCallback } from "react";
 import { useParams } from "react-router-dom";
-import databaseService from "../../services/database.services";
-import { PostForm, QueryHandler } from "../../components";
-import useCustomReactQuery from "../../utils/useCustomReactQuery";
+import databaseService from "../../services/database.services.js";
+import { PostForm, QueryHandler } from "../../components/index.js";
+import useCustomReactQuery from "../../utils/useCustomReactQuery.js";
 
 function EditPost() {
   const { postId } = useParams();

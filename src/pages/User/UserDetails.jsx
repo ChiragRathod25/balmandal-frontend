@@ -1,8 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import databaseService from '../../services/database.services';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
-import { Button, UserAvatar } from '../../components';
+import { useSelector } from 'react-redux';
+import { Button, UserAvatar } from '../../components/index.js';
 
 
 function UserDetails({ user,setEditing }) {

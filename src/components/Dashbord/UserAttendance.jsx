@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import databaseService from '../../services/database.services';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
-import { UserAttendanceCard } from '..';
+import databaseService from '../../services/database.services.js';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
+import { UserAttendanceCard } from '../index.js';
 
 function UserAttendance() {
   const userId = useSelector((state) => state.dashboard.editableUser?._id);

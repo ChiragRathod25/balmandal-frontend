@@ -1,9 +1,9 @@
 // this will display One unregistered attendance info
 import  { useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import databaseService from '../../../services/database.services';
-import useCustomReactQuery from '../../../utils/useCustomReactQuery';
-import { Button } from '../../../components';
+import databaseService from '../../../services/database.services.js';
+import useCustomReactQuery from '../../../utils/useCustomReactQuery.js';
+import { Button } from '../../../components/index.js';
 
 function UnregisteredAttendance() {
   const { unregisteredAttendanceId } = useParams();

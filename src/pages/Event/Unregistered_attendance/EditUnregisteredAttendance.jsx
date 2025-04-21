@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import { UnregisteredAttendanceForm } from '../../../components';
-import databaseService from '../../../services/database.services';
-import useCustomReactQuery from '../../../utils/useCustomReactQuery';
+import { UnregisteredAttendanceForm } from '../../../components/index.js';
+import databaseService from '../../../services/database.services.js';
+import useCustomReactQuery from '../../../utils/useCustomReactQuery.js';
 
 function EditUnregisteredAttendance() {
   const { unregisteredAttendanceId } = useParams();

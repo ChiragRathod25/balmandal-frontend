@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { X, Pencil, Trash } from 'lucide-react';
-import databaseService from '../../services/database.services';
+import databaseService from '../../services/database.services.js';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ParentForm, Modal, Button } from '..';
-import { setEditableUserParent } from '../../slices/dashboard/dashboardSlice';
-import { Parent } from '../../pages/index';
-import { UserParentCard } from '..';
+import { ParentForm, Modal, Button,UserParentCard} from '../index.js';
+import { setEditableUserParent } from '../../slices/dashboard/dashboardSlice.js';
+import { Parent } from '../../pages/index.js';
+
 
 function UserParent() {
   const { userId } = useParams();

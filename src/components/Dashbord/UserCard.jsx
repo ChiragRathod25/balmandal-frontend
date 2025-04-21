@@ -1,4 +1,4 @@
-import { Button } from '../';
+import { Button } from '../index.js';
 import { useNavigate } from 'react-router-dom';
 
 function UserCard({ user }) {

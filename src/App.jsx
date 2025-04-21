@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import databaseService from './services/database.services';
+import databaseService from './services/database.services.js';
 import { useDispatch } from 'react-redux';
-import { login, logout } from './slices/userSlice/authSlice';
-import useScrollToTop from './utils/useScrollToTop';
-import MyToaster from './MyToaster';
-import { registerAndSubscribe, regSw } from './utils/subscriptionHelper';
+import { login, logout } from './slices/userSlice/authSlice.js';
+import useScrollToTop from './utils/useScrollToTop.js';
+import MyToaster from './MyToaster.jsx';
+import { registerAndSubscribe } from './utils/subscriptionHelper.js';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
-import { Layout } from './components';
-import { setDeferredPrompt } from './utils/installPromptStore';
+import { Layout } from './components/index.js';
+import { setDeferredPrompt } from './utils/installPromptStore.js';
 
 //App Component
 function App() {

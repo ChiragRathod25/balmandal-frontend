@@ -3,10 +3,10 @@
 // where we can see the details of that unregistered attendies and we can also delete and edit that unregistered attendies 
 // and also we can add the new unregistered attendies
 import { useCallback } from 'react';
-import { Button } from '../../';
+import { Button } from '../../index.js';
 import { useNavigate, useParams } from 'react-router-dom';
-import databaseService from '../../../services/database.services';
-import useCustomReactQuery from '../../../utils/useCustomReactQuery';
+import databaseService from '../../../services/database.services.js';
+import useCustomReactQuery from '../../../utils/useCustomReactQuery.js';
 
 function EventUnregisteredAttendance() {
   const navigate = useNavigate();

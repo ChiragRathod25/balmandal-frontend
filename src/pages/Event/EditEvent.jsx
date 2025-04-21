@@ -1,8 +1,9 @@
 import  { useCallback, useEffect,useState } from 'react'
 import { useParams,useNavigate } from 'react-router-dom'
-import databaseService from '../../services/database.services'
-import useCustomReactQuery from '../../utils/useCustomReactQuery'
-import { EventForm, QueryHandler } from '../../components'
+import databaseService from '../../services/database.services.js'
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js'
+import { EventForm, QueryHandler } from '../../components/index.js'
+
 function EditEvent() {
     const {eventId}=useParams()
     const [event,setEvent]=useState(null)

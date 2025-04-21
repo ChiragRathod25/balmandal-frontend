@@ -1,4 +1,4 @@
-import { AchievementForm, Container } from "../../components";
+import { AchievementForm, Container } from "../../components/index.js";
 
 function AddAchievement() {
     return (

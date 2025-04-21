@@ -1,10 +1,9 @@
 import  { useCallback, useEffect, useState } from 'react';
-import databaseService from '../../services/database.services';
+import databaseService from '../../services/database.services.js';
 import { useSelector } from 'react-redux';
-import { Button, UserParentCard } from '../../components';
+import { Button, UserParentCard ,QueryHandler} from '../../components/index.js';
 import { useNavigate } from 'react-router-dom';
-import useCustomeReactQuery from '../../utils/useCustomReactQuery';
-import { QueryHandler } from '../../components';
+import useCustomeReactQuery from '../../utils/useCustomReactQuery.js';
 
 function AllParent() {
   const navigate = useNavigate();

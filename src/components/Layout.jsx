@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { HeaderComponent, FooterComponent } from './';
-import { TopBar, SideDrawer, BottomTabBar } from './';
+import { HeaderComponent, FooterComponent } from './index.js';
+import { TopBar, SideDrawer, BottomTabBar } from './index.js';
 
 function Layout({ children }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);

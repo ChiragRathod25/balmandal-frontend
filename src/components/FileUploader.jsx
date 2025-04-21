@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Input } from "./";
+import { Input } from "./index.js";
 
 function MultipleFilesInputPreview({ register, name, accept, watch }) {
   const [preview, setPreview] = useState([]);

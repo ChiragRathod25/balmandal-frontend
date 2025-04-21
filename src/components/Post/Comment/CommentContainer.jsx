@@ -1,7 +1,7 @@
 import  { useCallback, useEffect, useState } from 'react';
-import { CommentCard, CommentForm } from '../../index';
-import databaseService from '../../../services/database.services';
-import useCustomReactQuery from '../../../utils/useCustomReactQuery';
+import { CommentCard, CommentForm } from '../../index.js';
+import databaseService from '../../../services/database.services.js';
+import useCustomReactQuery from '../../../utils/useCustomReactQuery.js';
 import { useParams } from 'react-router-dom';
 
 function CommentContainer() {

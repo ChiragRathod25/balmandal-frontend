@@ -1,8 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import databaseService from '../../services/database.services';
+import databaseService from '../../services/database.services.js';
 import { useNavigate,Link } from 'react-router-dom';
-import { Input, Button } from '../../components';
+import { Input, Button } from '../../components/index.js';
+
 function ForgetPassword() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();

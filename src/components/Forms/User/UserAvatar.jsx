@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Input, Button } from '../../';
-import databaseService from '../../../services/database.services';
+import { Input, Button } from '../../index.js';
+import databaseService from '../../../services/database.services.js';
 import { useSelector } from 'react-redux';
 
 function UserAvatar({ avatar }) {

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import databaseService from '../services/database.services';
-import { logout } from '../slices/userSlice/authSlice';
+import databaseService from '../services/database.services.js';
+import { logout } from '../slices/userSlice/authSlice.js';
 import toast from 'react-hot-toast';
 
 function Logout() {

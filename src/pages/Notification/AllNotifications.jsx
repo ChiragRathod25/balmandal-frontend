@@ -2,11 +2,11 @@
 // if user?='id', user notificatinos 
 // createdBy?='id' for getNotificationsByCreaterId
 import  { useCallback, useEffect, useState } from 'react';
-import databaseService from '../../services/database.services';
+import databaseService from '../../services/database.services.js';
 import { useSelector } from 'react-redux';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
 import { useNavigate } from 'react-router-dom';
-import { Button, QueryHandler } from '../../components';
+import { Button, QueryHandler } from '../../components/index.js';
 
 function AllNotifications() {
   const [notifications, setNotifications] = useState([]);

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { UserDetails as UserDetailsComponent } from '../../pages';
-import { UserDetailsForm } from '..';
+import { UserDetails as UserDetailsComponent } from '../../pages/index.js';
+import { UserDetailsForm } from '../index.js';
 import { useSelector,useDispatch } from 'react-redux';
-import { setEditableUser } from '../../slices/dashboard/dashboardSlice';
+import { setEditableUser } from '../../slices/dashboard/dashboardSlice.js';
 
 const UserDetails = () => {
   const [isEditing, setEditing] = useState(false);

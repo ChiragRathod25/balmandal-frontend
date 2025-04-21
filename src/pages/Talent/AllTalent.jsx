@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
-import databaseService from '../../services/database.services';
+import databaseService from '../../services/database.services.js';
 import { useSelector } from 'react-redux';
-import { Button, UserTalentCard } from '../../components';
+import { Button, UserTalentCard,QueryHandler } from '../../components/index.js';
 import { useNavigate } from 'react-router-dom';
-import useCustomReactQuery from '../../utils/useCustomReactQuery';
-import { QueryHandler } from '../../components';
+import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
 
 function AllTalent() {
   const [talents, setTalents] = useState(null);

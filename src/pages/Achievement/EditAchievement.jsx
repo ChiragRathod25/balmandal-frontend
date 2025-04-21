@@ -1,9 +1,8 @@
 import  { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import databaseService from '../../services/database.services';
-import { AchievementForm } from '../../components';
-import useCustomeReactQuery from '../../utils/useCustomReactQuery';
-import { QueryHandler } from '../../components';
+import databaseService from '../../services/database.services.js';
+import { AchievementForm,QueryHandler} from '../../components/index.js';
+import useCustomeReactQuery from '../../utils/useCustomReactQuery.js';
 
 function EditAchievement() {
   const { achievementId } = useParams();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Input, Button } from '../../..';
-import databaseService from '../../../../services/database.services';
+import { Input, Button } from '../../../index.js';
+import databaseService from '../../../../services/database.services.js';
 import { useParams } from 'react-router-dom';
 
 function CommentForm({ comment, onCommentAdded }) {
