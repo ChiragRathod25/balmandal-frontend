@@ -35,22 +35,21 @@ function EventForm({ event }) {
       setValue('endAt', newEndAt);
     }
   }, [event, setValue]);
-
-  const startAd = watch('startAt');
-  const endAd = watch('endAt');
-
-  useEffect(() => {
-    if (startAd && endAd && startAd > endAd) {
-      alert('Start Date should be less than End Date');
-      setValue('endAt', '');
-    }
-  }, [startAd, endAd, setValue]);
+ 
 
   const navigate = useNavigate();
   const [cloudFiles, setCloudFiles] = React.useState(event?.media || []);
   let FinalCloudFiles = cloudFiles;
 
   const submit = async (data) => {
+    // check if the start date is less than end date
+    if (data.startAt && data.endAt && data.startAt > data.endAt) {
+      alert('Start Date should be less than End Date');
+      setValue('endAt', '');
+      return;
+    }
+
+
     data['cloudMediaFiles'] = JSON.stringify(FinalCloudFiles);
 
     if (event) {
