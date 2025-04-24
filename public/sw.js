@@ -1,4 +1,3 @@
-
 self.addEventListener('push', (event) => {
   const data = event.data ? event.data.json() : {};
 
@@ -13,7 +12,7 @@ self.addEventListener('push', (event) => {
     tag: _id,
     icon: poster,
     badge: badge,
-    data: { url: link }, 
+    data: { url: link },
     actions: [],
   };
 
@@ -23,7 +22,7 @@ self.addEventListener('push', (event) => {
 self.addEventListener('notificationclick', (event) => {
   event.notification.close(); // Close the notification popup
 
-  const urlToOpen = event.notification.data?.url || 'https://your-default-url.com';
+  const urlToOpen = event.notification.data?.url || 'https://apcbalmandal.vercel.app';
 
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
@@ -50,38 +49,44 @@ self.addEventListener('notificationclick', (event) => {
   );
 });
 
+const CACHE_NAME = 'static-cache-v1.1';
+const ASSETS_TO_CACHE = [
+  '/manifest.json',
+  '/logo.webp',
+  '/avatar.webp',
+  '/eventDefault.webp',
+  '/achievementHero.avif',
+];
+
+//install
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open('static-cache-v1').then((cache) => {
-      return cache.addAll([
-        '/',
-        '/index.html',
-        '/manifest.json',  
-        '/logo.webp',
-        
-      ]);
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(ASSETS_TO_CACHE);
     })
   );
+  self.skipWaiting(); // Activate new service worker immediately
 });
 
+// activate
 self.addEventListener('activate', (event) => {
-  console.log('Service Worker Activated');
-  const cacheWhitelist = ['static-cache-v1']; // Only keep the latest cache
-
+  console.log('[Service Worker] Activated');
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName); // Remove old caches
+    caches.keys().then((cacheNames) =>
+      Promise.all(
+        cacheNames.map((cache) => {
+          if (cache !== CACHE_NAME) {
+            // If the cache name doesn't match the current cache name
+            // Delete the old cache
+            console.log('[Service Worker] Deleting old cache:', cache);
+            return caches.delete(cache);
           }
         })
-      );
-    })
+      )
+    )
   );
+  self.clients.claim(); // Take control of all clients(pages) immediately
 });
-
-
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(
