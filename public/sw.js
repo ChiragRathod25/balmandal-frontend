@@ -49,7 +49,7 @@ self.addEventListener('notificationclick', (event) => {
   );
 });
 
-const CACHE_NAME = 'static-cache-v1.1';
+const CACHE_NAME = 'static-cache-v1.2';
 const ASSETS_TO_CACHE = [
   '/manifest.json',
   '/logo.webp',

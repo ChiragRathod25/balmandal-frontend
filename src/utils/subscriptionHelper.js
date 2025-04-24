@@ -7,6 +7,21 @@ export async function regSw() {
     if ('serviceWorker' in navigator) {
       const reg = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
       log.debug('Service Worker Registered:', reg);
+
+      // Listen for the service worker's 'updatefound' event to know when a new service worker is installed
+      reg.addEventListener('updatefound', () => {
+        const newWorker = reg.installing;
+
+        // Listen for the 'statechange' event on the new worker to know when it's activated
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'activated') {
+            console.log('[Service Worker] New worker activated, refreshing page');
+            // reload
+            window.location.reload();
+          }
+        });
+      });
+
       return reg;
     } else {
       log.debug('Service workers are not supported in this browser.');
@@ -15,6 +30,7 @@ export async function regSw() {
     console.error('Service Worker Registration Failed:', error);
   }
 }
+
 
 export const subscribeUser = async (serviceWorkerReg) => {
   if (!serviceWorkerReg) {
