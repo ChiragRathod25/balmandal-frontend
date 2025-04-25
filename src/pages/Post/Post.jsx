@@ -89,7 +89,7 @@ function Post() {
 
         {/* Action Buttons */}
         <div className="mt-6 flex justify-between">
-          {post.createdBy === authUser._id ? (
+          {post.createdBy === authUser._id || isAdmin ? (
             <>
               <Button
                 onClick={() => navigate('/post/edit/' + postId)}
@@ -116,15 +116,7 @@ function Post() {
               </Button>
             </>
           )}
-          {/*show delete button only if user is admin and post is not created by the user */}
-          {isAdmin && post.createdBy !== authUser._id ? (
-            <Button
-              onClick={() => handleDelete(post?._id)}
-              className="bg-red-500 text-white px-4 py-2 rounded-lg"
-            >
-              🗑️ Delete Post
-            </Button>
-          ) : null}
+         
         </div>
       </div>
     </QueryHandler>
