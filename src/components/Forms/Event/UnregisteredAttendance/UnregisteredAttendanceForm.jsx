@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input, Button, Select } from '../../../index.js';
 import databaseService from '../../../../services/database.services.js';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -17,8 +17,15 @@ function UnregisteredAttendanceForm({ UnregisteredAttendance }) {
 
   const { eventId } = useParams();
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
 
   const submit = async (data) => {
+    //check if the mobile number is 10 digits
+    if(data?.mobile && (data?.mobile?.length < 10 || data?.mobile?.length > 10)) {
+      setError('Mobile number should be 10 digits \n or leave it empty');
+      return;
+    }
+
     try {
       const response = UnregisteredAttendance
         ? await databaseService.updateUnregisteredAttendance(data, UnregisteredAttendance._id)
@@ -72,7 +79,7 @@ function UnregisteredAttendanceForm({ UnregisteredAttendance }) {
         {...register('status', { required: true })}
         className="w-full"
       />
-
+      {error && <p className="text-red-500 text-sm text-center" >{error}</p>}
       <div className="flex gap-4 mt-4">
         <Button type="submit">Submit</Button>
         <Button

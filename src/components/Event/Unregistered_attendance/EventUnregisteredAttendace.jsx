@@ -47,7 +47,7 @@ function EventUnregisteredAttendance() {
               {attendee.remark && <p className="text-gray-500 text-sm italic">{attendee.remark}</p>}
               <span
                 className={`px-3 py-1 text-sm font-medium rounded-full mt-2 inline-block
-                  ${attendee.status === 'Present' ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}
+                  ${attendee.status === 'present' ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}
               >
                 {attendee.status}
               </span>

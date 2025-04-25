@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import databaseService from '../../services/database.services.js';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Input, Button } from '../../components/index.js';
 
 function ForgetPassword() {
@@ -24,7 +24,6 @@ function ForgetPassword() {
     } finally {
       setLoading(false);
     }
-
   };
   return (
     <div className="flex items-center justify-center items-start min-h-screen bg-gray-100 p-4 py-16">
@@ -52,7 +51,7 @@ function ForgetPassword() {
 
           <Button
             type="submit"
-            className="w-full py-2 mt-4 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+            className="w-full py-2 mt-4 text-white rounded-md hover:bg-blue-600"
           >
             Send Reset Link
           </Button>
@@ -64,7 +63,6 @@ function ForgetPassword() {
           </Link>
         </p>
       </div>
-
     </div>
   );
 }

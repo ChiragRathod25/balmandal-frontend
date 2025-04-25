@@ -127,7 +127,7 @@ function ParentForm({ parent, isUsedWithModal = false, closeForm}) {
         type="tel"
         label="Mobile: "
         placeholder="Enter Parent Mobile Number"
-        {...register('mobileNumber', { required: true })}
+        {...register('mobileNumber', { required: true, maxLength: 10, minLength: 10 })}
         className="mb-4"
       />
       <Input

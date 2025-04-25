@@ -65,8 +65,3 @@ body {
   background-color: #fcfcfc;
   color: #1f1f1f;
 }
-
-/* Smooth transitions everywhere */
-* {
-  transition: all 0.3s ease-in-out;
-}
