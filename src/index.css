@@ -1,19 +1,72 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 /* Reduce vertical spacing between multiple toasts */
 /* Reduce spacing between multiple toasts */
 #__react-hot-toast > div {
-    gap: 4px !important; /* Adjust the value as needed */
-    padding-top: 80px !important; /* Ensures all toasts start a bit lower */
-  }
-  
-  .modal-backdrop {
-    backdrop-filter: blur(8px);
-  }
-  
+  gap: 4px !important; /* Adjust the value as needed */
+  padding-top: 80px !important; /* Ensures all toasts start a bit lower */
+}
 
-  .prose iframe {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border-radius: 0.5rem; /* Optional: matches rounded-lg */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+}
+
+.prose iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem; /* Optional: matches rounded-lg */
+}
+
+/* loading bar  */
+/* Premium continuous loader with golden base + pink top */
+.loader {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 4px solid #f2ae66; /* Golden base ring */
+  border-top: 4px solid #c30e59; /* Animated pink arc */
+  animation: fluid-spin 1.2s linear infinite;
+  box-shadow:
+    0 8px 24px rgba(195, 14, 89, 0.2),
+    0 4px 10px rgba(242, 174, 102, 0.1);
+  transition: all 0.3s ease;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3), transparent);
+}
+
+/* Smooth rotation */
+@keyframes fluid-spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Classy breathing pulse for text */
+.animate-pulse {
+  animation: smooth-pulse 2s ease-in-out infinite;
+}
+
+@keyframes smooth-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-2px);
+  }
+}
+
+/* Clean UI foundation */
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background-color: #fcfcfc;
+  color: #1f1f1f;
+}
+
+/* Smooth transitions everywhere */
+* {
+  transition: all 0.3s ease-in-out;
+}

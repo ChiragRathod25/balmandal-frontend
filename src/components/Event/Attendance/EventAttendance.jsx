@@ -1,7 +1,7 @@
 // this will display all the registered attendies of one event list view,
 // if click on that redirect to the user profile page where we can see the details of that user and we can also delete and edit that user
-import  { useCallback } from 'react';
-import { Button } from '../../index.js';
+import { useCallback } from 'react';
+import { Button, ErrorComponent, LoadingComponent } from '../../index.js';
 import { useNavigate, useParams } from 'react-router-dom';
 import databaseService from '../../../services/database.services.js';
 import useCustomReactQuery from '../../../utils/useCustomReactQuery.js';
@@ -16,18 +16,13 @@ function EventAttendance() {
   );
 
   const { loading, error, data: attendanceList } = useCustomReactQuery(fetchAttendance);
- 
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen text-lg font-semibold">
-        Loading...
-      </div>
-    );
+    return <LoadingComponent />;
   }
 
   if (error) {
-    return <div className="text-red-500 text-center text-lg font-semibold">{error}</div>;
+    return <ErrorComponent errorMsg={error} />;
   }
 
   return (

@@ -98,10 +98,6 @@ function AttendanceForm({ attendanceList }) {
     }
   };
 
-  if (error) {
-    return <div className="text-red-500 text-center text-lg font-semibold">{error}</div>;
-  }
-
   return (
     <div className="container mx-auto p-6">
       <h2 className="text-3xl font-bold text-center mb-6">Attendance</h2>
@@ -154,6 +150,11 @@ function AttendanceForm({ attendanceList }) {
               />
             </div>
           ))}
+          {error && 
+            <div className="text-red-500 text-center mt-4 text-sm">
+              <p>{error}</p>
+            </div>
+          }
         <div className="flex gap-4 mt-4">
           <Button type="submit">Update</Button>
           <Button

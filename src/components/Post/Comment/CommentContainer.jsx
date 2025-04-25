@@ -1,5 +1,5 @@
 import  { useCallback, useEffect, useState } from 'react';
-import { CommentCard, CommentForm } from '../../index.js';
+import { CommentCard, CommentForm, ErrorComponent, LoadingComponent } from '../../index.js';
 import databaseService from '../../../services/database.services.js';
 import useCustomReactQuery from '../../../utils/useCustomReactQuery.js';
 import { useParams } from 'react-router-dom';
@@ -24,16 +24,16 @@ function CommentContainer() {
   };
 
   if (loading) {
-    return <div className="flex justify-center items-center min-h-screen text-lg font-semibold">Loading...</div>;
+    return <LoadingComponent />;
   }
   if (error) {
-    return <div className="text-red-500 text-center text-lg font-semibold">{error}</div>;
+    return <ErrorComponent errorMsg={error} />;
   }
 
   return (
     <div className="mt-4 p-4 border border-gray-300 rounded-lg shadow-sm bg-white">
       <CommentForm onCommentAdded={handleNewComment} />
-      {comments.length > 0 ? (
+      {comments?.length > 0 ? (
         <div className="mt-4 space-y-3">
           {comments.map((comment) => (
             <CommentCard key={comment._id} comment={comment} />

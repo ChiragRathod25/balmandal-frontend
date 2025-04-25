@@ -1,13 +1,12 @@
-import React from 'react'
-import {SignUp as SignUpComponent} from '../components/index.js'
+import React from 'react';
+import { SignUp as SignUpComponent } from '../components/index.js';
 
 function Register() {
   return (
     <>
-      <SignUpComponent/>
-
+      <SignUpComponent />
     </>
-  )
+  );
 }
 
-export default Register
+export default Register;

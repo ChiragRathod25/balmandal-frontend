@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Button, Select } from '../../components/index.js';
+import { Button, ErrorComponent, LoadingComponent, Select } from '../../components/index.js';
 import databaseService from '../../services/database.services.js';
 import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
 import { useDispatch } from 'react-redux';
@@ -55,13 +55,11 @@ function BirthdayDetails() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen text-lg font-semibold">
-        Loading...
-      </div>
+      <LoadingComponent/>
     );
   }
   if (error) {
-    return <div className="text-red-500 text-center text-lg font-semibold">{error}</div>;
+   return <ErrorComponent errorMsg={error} />;
   }
 
   return (

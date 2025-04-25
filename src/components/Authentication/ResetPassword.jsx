@@ -36,13 +36,6 @@ function ResetPassword() {
       });
   };
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-  if (error) {
-    return <p>{error}</p>;
-  }
-
   return resetToken ? (
     <>
       <div className="flex items-center justify-center items-start min-h-screen bg-gray-100 p-4 py-16">
@@ -64,6 +57,7 @@ function ResetPassword() {
               {...register('confirmPassword', { required: true })}
               className="w-full px-4 py-2 border rounded-md"
             />
+            {error && <p className="text-red-500">{error}</p>}
             <Button
               type="submit"
               className="w-full py-2 mt-4 text-white rounded-md hover:bg-blue-600"

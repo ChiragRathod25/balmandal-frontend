@@ -1,4 +1,4 @@
-import { AttendanceForm } from '../../../components/index.js';
+import { AttendanceForm, ErrorComponent, LoadingComponent } from '../../../components/index.js';
 import { useParams } from 'react-router-dom';
 import { useCallback } from 'react';
 import databaseService from '../../../services/database.services.js';
@@ -13,14 +13,10 @@ function EditAttendance() {
     
     const { loading, error, data: attendanceList } = useCustomReactQuery(fetchAttendance);
     if (loading) {
-      return (
-        <div className="flex justify-center items-center min-h-screen text-lg font-semibold">
-          Loading...
-        </div>
-      );
+      return <LoadingComponent/>
     }
     if (error) {
-      return <div className="text-red-500 text-center text-lg font-semibold">{error}</div>;
+     return <ErrorComponent errorMsg={error} />
     }
     
     return (

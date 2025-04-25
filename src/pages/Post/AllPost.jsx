@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import databaseService from "../../services/database.services.js";
 import useCustomReactQuery from "../../utils/useCustomReactQuery.js";
-import { Button, PostCard } from "../../components/index.js";
+import { Button, ErrorComponent, LoadingComponent, PostCard } from "../../components/index.js";
 
 function AllPost() {
   const fetchAllPosts = useCallback(() => databaseService.getPosts(), []);
@@ -11,11 +11,11 @@ function AllPost() {
   const isAdmin = useSelector((state) => state.auth.userData?.isAdmin);
 
   if (loading) {
-    return <p className="text-center text-lg font-semibold mt-5">Loading posts...</p>;
+    return <LoadingComponent customLoadingMsg={"Loading posts..."} />;
   }
 
   if (error) {
-    return <p className="text-center text-red-500 text-lg font-semibold mt-5">Error: {error}</p>;
+    return <ErrorComponent errorMsg={error} />;
   }
 
   return (

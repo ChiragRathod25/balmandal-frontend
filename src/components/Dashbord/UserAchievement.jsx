@@ -83,7 +83,7 @@ function UserAchievement() {
         {modalContent}
       </Modal>
 
-      {Array.isArray(achievements) && achievements.length > 0 && (
+      {Array.isArray(achievements) && achievements?.length > 0 && (
         <>
           <h2 className="text-3xl font-bold text-center text-[#C30E59] mb-6">{`${userName}'s Achievements`}</h2>
           <div

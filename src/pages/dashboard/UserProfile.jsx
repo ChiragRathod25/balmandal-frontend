@@ -7,6 +7,8 @@ import {
   UserParent,
   UserTalent,
   UserAttendanceDashboard,
+  LoadingComponent,
+  ErrorComponent,
 } from '../../components/index.js';
 import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
 import { useDispatch } from 'react-redux';
@@ -49,10 +51,11 @@ function UserData() {
     );
   }
   if (loading) {
-    return <div>Loading...</div>;
+    
+    return <LoadingComponent />
   }
   if (error) {
-    return <div>Error</div>;
+    return <ErrorComponent  errorMsg={error} />;
   }
 
   return (

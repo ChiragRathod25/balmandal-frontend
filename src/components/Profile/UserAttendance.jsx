@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { UserAttendanceCard } from '../index.js';
+import { ErrorComponent, LoadingComponent, UserAttendanceCard } from '../index.js';
 import { useSelector } from 'react-redux';
 import databaseService from '../../services/database.services.js';
 import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
@@ -14,13 +14,11 @@ function UserAttendance() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen text-lg font-semibold">
-        Loading...
-      </div>
+      <LoadingComponent/>
     );
   }
   if (error) {
-    return <div className="text-red-500 text-center text-lg font-semibold">{error}</div>;
+    return <ErrorComponent errorMsg={error} />;
   }
 
   return (

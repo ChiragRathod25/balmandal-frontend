@@ -3,7 +3,7 @@ import  { useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import databaseService from '../../../services/database.services.js';
 import useCustomReactQuery from '../../../utils/useCustomReactQuery.js';
-import { Button } from '../../../components/index.js';
+import { Button, ErrorComponent, LoadingComponent } from '../../../components/index.js';
 
 function UnregisteredAttendance() {
   const { unregisteredAttendanceId } = useParams();
@@ -21,10 +21,10 @@ function UnregisteredAttendance() {
   } = useCustomReactQuery(fetchUnregisteredAttendance);
 
   if (loading) {
-    return <div className="text-center text-lg font-semibold mt-10">Loading...</div>;
+   return <LoadingComponent />;
   }
   if (error) {
-    return <div className="text-center text-red-500 text-lg font-semibold mt-10">{error}</div>;
+    return <ErrorComponent errorMsg={error} />;
   }
 
   return (

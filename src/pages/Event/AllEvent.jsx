@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import databaseService from '../../services/database.services.js';
 import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
-import { Button, QueryHandler, EventCard } from '../../components/index.js';
+import { Button, QueryHandler, EventCard, LoadingComponent, ErrorComponent } from '../../components/index.js';
 import { useSelector } from 'react-redux';
 
 function AllEvent() {
@@ -13,11 +13,11 @@ function AllEvent() {
   const isAdmin = useSelector((state) => state.auth.userData?.isAdmin);
 
   if (loading) {
-    return <p className="text-center text-lg font-semibold mt-5">Loading Events...</p>;
+    return <LoadingComponent customLoadingMsg={'Loading events...'} />;
   }
 
   if (error) {
-    return <p className="text-center text-red-500 text-lg font-semibold mt-5">Error: {error}</p>;
+   return <ErrorComponent errorMsg={error} />;
   }
 
   return (

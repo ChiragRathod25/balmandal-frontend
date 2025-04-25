@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import databaseService from "../../services/database.services.js";
 import useCustomReactQuery from "../../utils/useCustomReactQuery.js";
-import { PostCard } from "../../components/index.js";
+import { ErrorComponent, LoadingComponent, PostCard } from "../../components/index.js";
 
 function PendingApproval() {
   const isAdmin = useSelector((state) => state.auth.userData?.isAdmin);
@@ -16,8 +16,8 @@ function PendingApproval() {
   // If not admin, restrict access
   if (!isAdmin) return <p className="text-center text-red-500 font-semibold">Access Denied</p>;
  
-  if(loading) return <p className="text-center text-gray-500">Loading...</p>; 
-  if(error) return <p className="text-center text-red-500">Error: {error}</p>;
+  if(loading) return <LoadingComponent />
+  if(error) return <ErrorComponent errorMsg={error} />
   
   return (
     <div className="max-w-3xl mx-auto p-4">

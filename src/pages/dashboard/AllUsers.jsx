@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import databaseService from '../../services/database.services.js';
 import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
-import { UserCard, Input } from '../../components/index.js';
+import { UserCard, Input, LoadingComponent, ErrorComponent } from '../../components/index.js';
 import { useDispatch } from 'react-redux';
 import { setAllUsers } from '../../slices/dashboard/dashboardSlice.js';
 
@@ -42,14 +42,10 @@ function AllUsers() {
   };
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen text-lg font-semibold">
-        Loading...
-      </div>
-    );
+    return <LoadingComponent />;
   }
   if (error) {
-    return <div className="text-red-500 text-center text-lg font-semibold">{error}</div>;
+    return <ErrorComponent errorMsg={error} />;
   }
 
   return (

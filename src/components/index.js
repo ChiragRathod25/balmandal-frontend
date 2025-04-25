@@ -49,6 +49,8 @@ import ForgetPassword from "./Authentication/ForgetPassword.jsx";
 import Login  from "./Authentication/Login.jsx";
 import SignUp  from "./Authentication/SignUp.jsx";
 import ResetPassword from "./Authentication/ResetPassword.jsx";
+import ErrorComponent from "./ErrorComponent.jsx";
+import LoadingComponent from "./LoadingComponent.jsx";
 
 export {
   QueryHandler,
@@ -101,5 +103,7 @@ export {
   ForgetPassword,
   Login,
   SignUp,
-  ResetPassword
+  ResetPassword,
+  ErrorComponent,
+  LoadingComponent,
 };
