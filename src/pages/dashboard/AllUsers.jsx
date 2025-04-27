@@ -6,8 +6,8 @@ import { useDispatch } from 'react-redux';
 import { setAllUsers } from '../../slices/dashboard/dashboardSlice.js';
 
 function AllUsers() {
-  const fetchAllUsers = useCallback(() => databaseService.fetchAllUsers(), []);
-  const { data: allUsers, loading, error } = useCustomReactQuery(fetchAllUsers);
+  const fetchAllActiveUsers = useCallback(() => databaseService.fetchAllActiveUsers(), []);
+  const { data: allUsers, loading, error } = useCustomReactQuery(fetchAllActiveUsers);
   const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
 
@@ -32,7 +32,8 @@ function AllUsers() {
       (user) =>
         user.firstName?.toLowerCase().includes(query.toLowerCase()) ||
         user.middleName?.toLowerCase().includes(query.toLowerCase()) ||
-        user.lastName?.toLowerCase().includes(query.toLowerCase())
+        user.lastName?.toLowerCase().includes(query.toLowerCase()) ||
+        user.username?.toLowerCase().includes(query.toLowerCase()) 
       // user.mediumOfStudy?.toLowerCase().includes(query.toLowerCase())
       // user.mobile?.toLowerCase().includes(query.toLowerCase()) ||
       // user.email?.toLowerCase().includes(query.toLowerCase()) ||

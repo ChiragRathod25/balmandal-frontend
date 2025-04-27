@@ -50,7 +50,8 @@ import {
   ResetPassword,
   AddRegisteredUser,
   BirthdayDetails,
-  AllUsers
+  AllUsers,
+  ManageUsers
 } from './pages/index.js';
 import { AuthLayout } from './components/index.js';
 
@@ -273,6 +274,15 @@ const router = createBrowserRouter([
                 <BirthdayDetails />
               </AuthLayout>
             )
+          },
+          {
+            path: 'manage-users',
+            element: (
+              <AuthLayout>
+                <ManageUsers />
+              </AuthLayout>
+            ),
+
           }
         ],
       },

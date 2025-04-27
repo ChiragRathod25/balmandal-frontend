@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 
-function UserParentCard({ parent, hanleClick, isUsedWithModal = false }) {
+function UserParentCard({ parent, handleClick, isUsedWithModal = false }) {
   const navigate = useNavigate();
   const handleCardClick = () => {
     if (isUsedWithModal) {
-      hanleClick(parent);
+      handleClick(parent);
     } else {
       navigate(`/parent/${parent._id}`);
     }

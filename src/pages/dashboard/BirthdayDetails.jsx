@@ -9,8 +9,8 @@ import { IoCalendarOutline } from "react-icons/io5";
 
 
 function BirthdayDetails() {
-  const fetchAllUsers = useCallback(() => databaseService.fetchAllUsers(), []);
-  const { data: allUsers, loading, error } = useCustomReactQuery(fetchAllUsers);
+  const fetchAllActiveUsers = useCallback(() => databaseService.fetchAllActiveUsers(), []);
+  const { data: allUsers, loading, error } = useCustomReactQuery(fetchAllActiveUsers);
   const [filteredUsers, setFilteredUsers] = useState([]);
 
   const dispatch = useDispatch();

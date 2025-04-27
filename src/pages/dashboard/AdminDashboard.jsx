@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/index.js';
 import { Users, Cake, UserPlus, LayoutDashboard } from 'lucide-react';
-
+import { useSelector } from 'react-redux';
 
 function AdminDashboard() {
   const navigate = useNavigate();
+  const isSuperAdmin = useSelector((state) => state.auth.userData?.isSuperAdmin);
 
   return (
     <div className=" min-h-screen flex flex-col items-center p-2 sm:w-full">
@@ -54,6 +55,16 @@ function AdminDashboard() {
             <UserPlus className="w-5 h-5" />
             Add Registered User
           </Button>
+
+          {isSuperAdmin && (
+            <Button
+              onClick={() => navigate('/dashboard/manage-users')}
+              className="flex items-center justify-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white w-full"
+            >
+              <Users className="w-5 h-5" />
+              Manage Users
+            </Button>
+          )}
         </div>
       </div>
     </div>

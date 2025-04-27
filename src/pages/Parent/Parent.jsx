@@ -38,7 +38,7 @@ function Parent({ id, isUsedWithModal = false }) {
   return (
     <QueryHandler queries={[{ loading, error }]}>
       {parent ? (
-        <div className="flex justify-center min-h-screen bg-white-100">
+        <div className="flex justify-center bg-white-100">
           <div className="bg-white shadow-lg rounded-xl p-6 w-full max-w-2xl">
             <h3 className="text-2xl font-bold text-center text-gray-800 mb-4">Parent Details</h3>
             <hr className="border-t-2 border-gray-300 mb-6 w-3/4 mx-auto" />

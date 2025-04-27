@@ -27,7 +27,7 @@ function UserProfile() {
             <span className="font-medium text-gray-800">Achievements</span>,{' '}
             <span className="font-medium text-gray-800">Talents</span>, and{' '}
             <span className="font-medium text-gray-800">Parent Details</span> directly from the side
-            drawer.
+            drawer or home page.
           </p>
         </div>
       </div>

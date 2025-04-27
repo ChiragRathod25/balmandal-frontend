@@ -27,6 +27,7 @@ import UserProfile from './User/UserProfile.jsx';
 import AllUsers from './dashboard/AllUsers.jsx';
 import AddRegisteredUser from './dashboard/AddRegisteredUser.jsx';
 import BirthdayDetails from './dashboard/BirthdayDetails.jsx';
+import ManageUsers from './dashboard/ManageUsers.jsx';
 
 import AddEvent from './Event/AddEvent.jsx';
 import EditEvent from './Event/EditEvent.jsx';
@@ -98,4 +99,5 @@ export {
   AddRegisteredUser,
   BirthdayDetails,
   AllUsers,
+  ManageUsers,
 };

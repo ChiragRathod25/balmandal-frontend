@@ -192,7 +192,7 @@ export class DatabaseService {
     );
   }
 
-  async forgetPassword({ email,username }) {
+  async forgetPassword({ email, username }) {
     return toast.promise(
       handleApiRequest(
         () =>
@@ -211,10 +211,9 @@ export class DatabaseService {
         id: 'forgetPassword',
       }
     );
-    
   }
 
-  async resetPassword({password},resetToken){
+  async resetPassword({ password }, resetToken) {
     return toast.promise(
       handleApiRequest(
         () =>
@@ -262,7 +261,6 @@ export class DatabaseService {
   }
 
   async deleteFile({ deleteUrl }, userId) {
-
     const config = {
       headers: { 'Content-Type': 'application/json' }, // Ensure JSON is sent
       data: { url: deleteUrl }, // Must be inside `data` for DELETE requests
@@ -667,7 +665,7 @@ export class DatabaseService {
     }
     return handleApiRequest(() => axiosInstace.get(`/api/v1/talent/${talentId}`), 'getTalentById');
   }
-  async addTalent({ heading, description, image,talentType}, userId = null) {
+  async addTalent({ heading, description, image, talentType }, userId = null) {
     const formData = new FormData();
     formData.append('heading', heading);
     formData.append('description', description);
@@ -717,7 +715,11 @@ export class DatabaseService {
       }
     );
   }
-  async updateTalent({ heading, description, image, cloudFiles,talentType }, talentId, userId = null) {
+  async updateTalent(
+    { heading, description, image, cloudFiles, talentType },
+    talentId,
+    userId = null
+  ) {
     const formData = new FormData();
     formData.append('heading', heading);
     formData.append('description', description);
@@ -799,8 +801,22 @@ export class DatabaseService {
     );
   }
 
-  async fetchAllUsers() {
+  async fetchAllActiveUsers() {
     return toast.promise(
+      handleApiRequest(() => axiosInstace.get('/api/v1/admin/all-active-users'), 'fetchAllActiveUsers'),
+      {
+        loading: 'Fetching Users',
+        success: 'All Users Fetched successfully',
+        error: 'Error while fetching users',
+      },
+      {
+        id: 'fetchAllActiveUsers',
+      }
+    );
+  }
+
+  async fetchAllUsers() {
+    return toast.promise( 
       handleApiRequest(() => axiosInstace.get('/api/v1/admin/all-users'), 'fetchAllUsers'),
       {
         loading: 'Fetching Users',
@@ -812,6 +828,7 @@ export class DatabaseService {
       }
     );
   }
+
   async getUserProfile(userId) {
     return toast.promise(
       handleApiRequest(
@@ -828,7 +845,69 @@ export class DatabaseService {
       }
     );
   }
-  async addEvent({ title, description, media, cloudMediaFiles, startAt, endAt, venue, eventType,status }) {
+
+  async toggleActiveStatus(userId) {
+    return toast.promise(
+      handleApiRequest(
+        () => axiosInstace.put(`/api/v1/admin/toggle-active-status/${userId}`),
+        'toggleActiveStatus'
+      ),
+      {
+        loading: 'Updating User status',
+        success: 'User status Updated successfully',
+        error: 'Error while updating user status',
+      },
+      {
+        id: 'toggleActiveStatus',
+      }
+    );
+  }
+
+  async updateUsername({ username }, userId) {
+    return toast.promise(
+      handleApiRequest(
+        () => axiosInstace.put(`/api/v1/admin/update-user-username/${userId}`, { newUserName:username }),
+        'updateUsername'
+      ),
+      {
+        loading: 'Updating username',
+        success: 'Username Updated successfully',
+        error: 'Error while updating username',
+      },
+      {
+        id: 'updateUsername',
+      }
+    );
+  }
+
+  async updateUserPassword({ password }, userId) {
+    return toast.promise(
+      handleApiRequest(
+        () => axiosInstace.put(`/api/v1/admin/update-user-password/${userId}`, { password }),
+        'updateUserPassword'
+      ),
+      {
+        loading: 'Updating password',
+        success: 'Password Updated successfully',
+        error: 'Error while updating password',
+      },
+      {
+        id: 'updateUserPassword',
+      }
+    );
+  }
+
+  async addEvent({
+    title,
+    description,
+    media,
+    cloudMediaFiles,
+    startAt,
+    endAt,
+    venue,
+    eventType,
+    status,
+  }) {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('description', description);
@@ -862,7 +941,10 @@ export class DatabaseService {
       }
     );
   }
-  async updateEvent({ title, description, media, cloudMediaFiles, eventType,startAt, endAt, venue,status }, eventId) {
+  async updateEvent(
+    { title, description, media, cloudMediaFiles, eventType, startAt, endAt, venue, status },
+    eventId
+  ) {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('description', description);
@@ -871,7 +953,7 @@ export class DatabaseService {
     formData.append('endAt', endAt);
     formData.append('venue', venue);
     formData.append('status', status);
-    
+
     if (media && media.length > 0) {
       Array.from(media).forEach((img) => formData.append('media', img));
     }
@@ -1018,7 +1100,7 @@ export class DatabaseService {
     return handleApiRequest(
       () => axiosInstace.post(`/api/v1/subscription/checkRegistration`, { endPoint }),
       'getSubscription'
-    )
+    );
   }
 
   // attendance
@@ -1354,7 +1436,6 @@ export class DatabaseService {
     return handleApiRequest(() => axiosInstace.get(`/api/v1/like/${postId}`), 'getLikesByPostId');
   }
 
-
   // save logs
   async saveLogs({ level, message, timestamp }) {
     return handleApiRequest(
@@ -1362,7 +1443,6 @@ export class DatabaseService {
       'saveLogs'
     );
   }
-
 }
 
 const databaseService = new DatabaseService();
