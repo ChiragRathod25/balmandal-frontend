@@ -96,16 +96,12 @@ function ManageUsers() {
 
   const handleUpdateUserName = (username, userId) => {
     // update the username in the users state
-    console.log("username", username);
-    console.log("userId", userId);
     const user = users.find((user) => user._id === userId);
     if (!user) {
       setUpdateError('User not found ');
       return;
     }
-    console.log("user", user);
     const updatedUser = { ...user, username: username };
-    console.log("updatedUser", updatedUser);
     setAllUsers((prevUsers) => prevUsers.map((user) => (user._id === userId ? updatedUser : user)));
     setUsers((prevUsers) => prevUsers.map((user) => (user._id === userId ? updatedUser : user)));
     setUpdateError(null);
