@@ -85,6 +85,8 @@ function ManageUsers() {
     try {
       await databaseService.toggleActiveStatus(userId);
       setUsers((prevUsers) => prevUsers.map((user) => (user._id === userId ? updatedUser : user)));
+      setAllUsers((prevUsers) =>prevUsers.map((user) => (user._id === userId ? updatedUser : user)))
+      
       setUpdateError(null);
     } catch (error) {
       console.error('Error updating user status:', error);
@@ -94,13 +96,18 @@ function ManageUsers() {
 
   const handleUpdateUserName = (username, userId) => {
     // update the username in the users state
+    console.log("username", username);
+    console.log("userId", userId);
     const user = users.find((user) => user._id === userId);
     if (!user) {
       setUpdateError('User not found ');
       return;
     }
+    console.log("user", user);
     const updatedUser = { ...user, username: username };
+    console.log("updatedUser", updatedUser);
     setAllUsers((prevUsers) => prevUsers.map((user) => (user._id === userId ? updatedUser : user)));
+    setUsers((prevUsers) => prevUsers.map((user) => (user._id === userId ? updatedUser : user)));
     setUpdateError(null);
 
     // if current user is the same as the updated user, update the username in the redux store
@@ -179,8 +186,7 @@ function ManageUsers() {
                     {user?.firstName?.charAt(0)}
                     {user?.lastName?.charAt(0)}
                   </span>
-                ) 
-                }
+                )}
               </div>
 
               <div className="flex flex-col gap-1">
@@ -196,11 +202,14 @@ function ManageUsers() {
                     {user?.isActive ? 'Active' : 'Inactive'}
                   </span>
                 </div>
-                <p className="text-gray-500 text-sm 
+                <p
+                  className="text-gray-500 text-sm 
                   underline
                 "
-                onClick={()=>navigate(`/dashboard/user/${user._id}`)}
-                >@{user?.username}</p>
+                  onClick={() => navigate(`/dashboard/user/${user._id}`)}
+                >
+                  @{user?.username}
+                </p>
               </div>
             </div>
 
