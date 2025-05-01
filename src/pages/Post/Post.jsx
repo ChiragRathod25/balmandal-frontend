@@ -21,7 +21,7 @@ function Post() {
   const handleApprove = async (postId) => {
     try {
       const response = await databaseService.toggleIsApproved({ postId }).then((res) => res.data);
-      if (response?.isApproved) {
+      if (response) {
         navigate(`/post`);
       } else {
         console.error('Error updating post approval status.');
@@ -32,6 +32,9 @@ function Post() {
     }
   };
   const handleDelete = async (postId) => {
+    //confirm
+    if (!window.confirm('Are you sure you want to delete this post?')) return;
+
     try {
       const response = await databaseService.deletePost({ postId }).then((res) => res.data);
       if (response) {
@@ -88,35 +91,51 @@ function Post() {
         <PostInteractions />
 
         {/* Action Buttons */}
-        <div className="mt-6 flex justify-between">
+        <div
+          className="
+        grid grid-cols-3  gap-4 mt-6"
+        >
           {post.createdBy === authUser._id || isAdmin ? (
             <>
               <Button
                 onClick={() => navigate('/post/edit/' + postId)}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+                className="bg-blue-500 text-white  rounded-lg"
               >
-                ✏️ Edit Post
+                ✏️ Edit
               </Button>
               <Button
                 onClick={() => handleDelete(post?._id)}
-                className="bg-red-500 text-white px-4 py-2 rounded-lg"
+                className="
+              bg-red-500 text-white  rounded-lg
+              px-0 py-0 
+              "
               >
-                🗑️ Delete Post
+                🗑️Delete
               </Button>
             </>
           ) : null}
 
-          {isAdmin && !post?.isApproved && (
+          {isAdmin && post?.isApproved ? (
             <>
               <Button
                 onClick={() => handleApprove(post?._id)}
-                className="bg-green-500 text-white px-4 py-2 rounded-lg"
+                className="
+               text-white  rounded-lg
+                bg-red-500"
               >
-                ✅ Approve Post
+                ✖ Disapprove
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                onClick={() => handleApprove(post?._id)}
+                className="bg-green-500 text-white  rounded-lg"
+              >
+                ✅ Approve
               </Button>
             </>
           )}
-         
         </div>
       </div>
     </QueryHandler>

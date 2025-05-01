@@ -49,10 +49,13 @@ import ForgetPassword from "./Authentication/ForgetPassword.jsx";
 import Login  from "./Authentication/Login.jsx";
 import SignUp  from "./Authentication/SignUp.jsx";
 import ResetPassword from "./Authentication/ResetPassword.jsx";
+import UpdatePassword from "./Authentication/UpdatePassword.jsx";
 import ErrorComponent from "./ErrorComponent.jsx";
 import LoadingComponent from "./LoadingComponent.jsx";
+
 import UpdatePasswordForm from "./Forms/Dashboard/UpdatePasswordForm.jsx";
 import UpdateUsernameForm from "./Forms/Dashboard/UpdateUsernameForm.jsx";
+
 
 export {
   QueryHandler,
@@ -110,5 +113,6 @@ export {
   LoadingComponent,
   UpdatePasswordForm,
   UpdateUsernameForm,
+  UpdatePassword
   
 };

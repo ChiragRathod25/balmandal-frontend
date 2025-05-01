@@ -24,6 +24,7 @@ import AdminDashboard from './dashboard/AdminDashboard.jsx';
 import UserData from './dashboard/UserProfile.jsx';
 import UserDetails from './User/UserDetails.jsx';
 import UserProfile from './User/UserProfile.jsx';
+import UpdatePassword from './User/UpdatePassword.jsx';
 import AllUsers from './dashboard/AllUsers.jsx';
 import AddRegisteredUser from './dashboard/AddRegisteredUser.jsx';
 import BirthdayDetails from './dashboard/BirthdayDetails.jsx';
@@ -52,6 +53,7 @@ import UserPosts from './Post/UserPosts.jsx';
 import PendingApproval from './Post/PendingApproval.jsx';
 import InstallApp from './InstallApp.jsx';
 import About from './About.jsx';
+import Contact from './Contact.jsx';
 
 export {
   AddAchievement,
@@ -100,4 +102,6 @@ export {
   BirthdayDetails,
   AllUsers,
   ManageUsers,
+  Contact,
+  UpdatePassword
 };

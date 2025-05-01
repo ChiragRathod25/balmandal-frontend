@@ -18,8 +18,12 @@ function UserAchievementCard({ achievement, handleClick, isUsedWithModal = false
     const files = achievement?.media;
     if (files && files.length > 0) {
       for (const file of files) {
-        if (file.includes('image')) {
+        if (typeof file === 'string' && file.includes('image')) {
           hero = file;
+          return hero;
+        }
+        if (typeof file === 'object' && file.url?.includes('image')) {
+          hero = file.url;
           return hero;
         }
       }

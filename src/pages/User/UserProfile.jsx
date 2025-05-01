@@ -2,6 +2,7 @@ import { useState } from 'react';
 import UserDetails from './UserDetails.jsx';
 import { useSelector } from 'react-redux';
 import { UserDetailsForm, UserAttendanceProfile } from '../../components/index.js';
+import { Link } from 'react-router-dom';
 
 function UserProfile() {
   const [isEditing, setEditing] = useState(false);
@@ -16,12 +17,22 @@ function UserProfile() {
           </div>
         </div>
       ) : (
-        <UserDetails user={user} setEditing={setEditing} />
+        <>
+          <UserDetails user={user} setEditing={setEditing} />
+        </>
       )}
 
       {/* Navigation Buttons */}
-      <div className="flex flex-wrap gap-4 justify-center mb-6">
+      <div className="flex flex-wrap gap-2 justify-center ">
         <div className="space-y-4 text-center">
+          <p className="text-sm text-gray-600 italic text-left mx-auto w-11/12">
+            <Link
+              to="/update-password"
+              className="text-blue-500 hover:text-blue-700 text-sm font-semibold"
+            >
+              Click here to change password
+            </Link>
+          </p>
           <p className="text-sm text-gray-600 italic text-left mx-auto w-11/12">
             * You can manage your profile details like{' '}
             <span className="font-medium text-gray-800">Achievements</span>,{' '}

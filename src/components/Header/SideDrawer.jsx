@@ -32,6 +32,10 @@ const SideDrawer = ({ isOpen, onClose }) => {
         to: '/about',
       },
       {
+        name: 'Contact Us',
+        to: '/contact',
+      },
+      {
         name: 'Logout',
         to: '/logout',
       },

@@ -71,6 +71,9 @@ function UserDetails({ user,setEditing }) {
             <p>
               <span className="font-semibold">School:</span> {user?.school}
             </p>
+            <p>
+              <span className="font-semibold">Address:</span> {user?.address}
+            </p>
           </div>
         </div>
       </div>

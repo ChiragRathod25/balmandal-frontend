@@ -1,4 +1,4 @@
-import  { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import databaseService from '../../services/database.services.js';
 import { useNavigate, useParams } from 'react-router-dom';
 import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
@@ -33,10 +33,13 @@ function Notification() {
             <p className="font-semibold text-gray-800 mb-1">Message:</p>
           </div>
           <div className="whitespace-pre-wrap flex flex-row gap-2">
-          <p className="text-gray-700 text-sm sm:text-base">
-  {Notification?.message ? parse(Notification.message) : "No message available"}
-</p>
-
+            <p className="text-gray-700 text-sm sm:text-base">
+              {
+                Notification?.notificationContent && Notification?.notificationContent.length > 0
+                ? parse(Notification.notificationContent)
+                :Notification?.message ? parse(Notification?.message) : 'No message available'
+              }
+            </p>
           </div>
         </div>
 
@@ -64,14 +67,6 @@ function Notification() {
             Back to Notifications
           </Button>
 
-          {isAdmin && (
-            <Button
-              onClick={() => databaseService.deleteNotification({ notificationId })}
-              className="bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600"
-            >
-              Delete Notification
-            </Button>
-          )}
         </div>
       </div>
     </QueryHandler>

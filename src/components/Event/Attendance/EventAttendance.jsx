@@ -48,6 +48,12 @@ function EventAttendance() {
               >
                 {attendance.status}
               </span>
+              {/* show deactivation label if the user is marked as activated */}
+              {attendance.user?.isActive===false && (
+                <span className="ml-2 px-3 py-1 text-sm font-medium bg-yellow-200 text-yellow-800 rounded-full">
+                  Deactivated
+                </span>
+              )} 
             </div>
           ))}
         </div>

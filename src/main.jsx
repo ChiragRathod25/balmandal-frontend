@@ -51,7 +51,9 @@ import {
   AddRegisteredUser,
   BirthdayDetails,
   AllUsers,
-  ManageUsers
+  ManageUsers,
+  Contact,
+  UpdatePassword
 } from './pages/index.js';
 import { AuthLayout } from './components/index.js';
 
@@ -89,8 +91,13 @@ const router = createBrowserRouter([
       {
         path:'/about',
         element:(
-        
             <About />
+        )
+      },
+      {
+        path:'/contact',
+        element:(
+            <Contact />
         )
       },
       {
@@ -120,6 +127,14 @@ const router = createBrowserRouter([
             <UserProfile />
           </AuthLayout>
         ),
+      },
+      {
+        path:'/update-password',
+        element:(
+          <AuthLayout>
+            <UpdatePassword />
+          </AuthLayout>
+        )
       },
       {
         path: 'achievement',

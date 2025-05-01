@@ -48,7 +48,7 @@ export class DatabaseService {
     );
   }
   async updateUserDetails(
-    { firstName, lastName, middleName, email, mobile, DOB, school, std, mediumOfStudy },
+    { firstName, lastName, middleName, email, mobile, DOB, school, std, mediumOfStudy, address },
     userId = null
   ) {
     if (userId) {
@@ -64,6 +64,7 @@ export class DatabaseService {
               DOB,
               school,
               std,
+              address,
               mediumOfStudy,
             }),
           'updateUserDetails'
@@ -90,6 +91,7 @@ export class DatabaseService {
             mobile,
             DOB,
             school,
+            address,
             std,
             mediumOfStudy,
           }),
@@ -151,38 +153,18 @@ export class DatabaseService {
       }
     );
   }
-  async updatePassword({ password, newPassword }, userId = null) {
-    if (userId) {
-      return toast.promise(
-        handleApiRequest(
-          () =>
-            axiosInstace.put(`/api/v1/admin/updatePassword?userId=${userId}`, {
-              password,
-              newPassword,
-            }),
-          'updatePassword'
-        ),
-        {
-          loading: 'Updating',
-          success: 'Password Updated successfully',
-          error: 'Error while updating password',
-        },
-        {
-          id: 'updatePassword',
-        }
-      );
-    }
+  async updatePassword({oldPassword, newPassword}) {
     return toast.promise(
       handleApiRequest(
         () =>
           axiosInstace.put('/api/v1/user/updatePassword', {
-            password,
+            oldPassword,
             newPassword,
           }),
         'updatePassword'
       ),
       {
-        loading: 'Updating',
+        loading: 'Updating Password',
         success: 'Password Updated successfully',
         error: 'Error while updating password',
       },
@@ -232,6 +214,9 @@ export class DatabaseService {
       }
     );
   }
+
+
+  
   async getCurrentuser() {
     return handleApiRequest(
       () => axiosInstace.get('/api/v1/user/getCurrentuser'),
@@ -646,7 +631,6 @@ export class DatabaseService {
   }
 
   async getUserTalents(userId = null) {
-
     if (userId) {
       return handleApiRequest(
         () => axiosInstace.get(`/api/v1/admin/talent?userId=${userId}`),
@@ -803,7 +787,10 @@ export class DatabaseService {
 
   async fetchAllActiveUsers() {
     return toast.promise(
-      handleApiRequest(() => axiosInstace.get('/api/v1/admin/all-active-users'), 'fetchAllActiveUsers'),
+      handleApiRequest(
+        () => axiosInstace.get('/api/v1/admin/all-active-users'),
+        'fetchAllActiveUsers'
+      ),
       {
         loading: 'Fetching Users',
         success: 'All Users Fetched successfully',
@@ -816,7 +803,7 @@ export class DatabaseService {
   }
 
   async fetchAllUsers() {
-    return toast.promise( 
+    return toast.promise(
       handleApiRequest(() => axiosInstace.get('/api/v1/admin/all-users'), 'fetchAllUsers'),
       {
         loading: 'Fetching Users',
@@ -866,7 +853,10 @@ export class DatabaseService {
   async updateUsername({ username }, userId) {
     return toast.promise(
       handleApiRequest(
-        () => axiosInstace.put(`/api/v1/admin/update-user-username/${userId}`, { newUserName:username }),
+        () =>
+          axiosInstace.put(`/api/v1/admin/update-user-username/${userId}`, {
+            newUserName: username,
+          }),
         'updateUsername'
       ),
       {

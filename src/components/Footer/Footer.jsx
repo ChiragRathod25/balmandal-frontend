@@ -12,7 +12,7 @@ const Footer = () => {
           <a href="#" className="hover:text-[#F2AE66] transition-colors">Contact Us</a> */}
           <Link to="#" className="hover:text-[#F2AE66] transition-colors">Privacy Policy</Link>
           <Link to="#" className="hover:text-[#F2AE66] transition-colors">Terms of Service</Link>
-          <Link to="#" className="hover:text-[#F2AE66] transition-colors">Contact Us</Link>
+          <Link to="/contact" className="hover:text-[#F2AE66] transition-colors">Contact Us</Link>
           <Link to="/about" className="hover:text-[#F2AE66] transition-colors">About Us</Link>
         </div>
       </div>

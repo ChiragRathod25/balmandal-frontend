@@ -22,6 +22,7 @@ function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
       school: user.school || '',
       std: user.std || '',
       mediumOfStudy: user.mediumOfStudy || '',
+      address: user.address || '',
     },
   });
 
@@ -113,6 +114,15 @@ function UserDetailsForm({ user, setEditing, handleUserDetailsEditing }) {
         </div>
 
         <Input label="School" placeholder="School" className="w-full" {...register('school')} />
+        
+        <Input
+         type="textarea" 
+          label="Address"
+          rows={3}
+          placeholder="Address"
+          className="w-full"
+          {...register('address')}
+        />
 
         <div className="flex justify-between p-4">
           <Button type="submit">Update</Button>
