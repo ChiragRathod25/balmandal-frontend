@@ -14,6 +14,13 @@ function EventAttendance() {
     () => databaseService.getAttendanceByEventId({ eventId }),
     [eventId]
   );
+  const handleCall = (mobile) => {
+    if (!mobile) {
+      alert('Mobile number is not available for this user.');
+      return;
+    }
+    window.open(`tel:${mobile}`, '_blank');
+  };
 
   const { loading, error, data: attendanceList } = useCustomReactQuery(fetchAttendance);
 
@@ -37,11 +44,33 @@ function EventAttendance() {
             <div
               key={attendance.userId}
               className="border border-gray-300 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100 transition cursor-pointer"
-              onClick={() => navigate(`/dashboard/user/${attendance.userId}`)}
+              // onClick={() => navigate(`/dashboard/user/${attendance.userId}`)}
             >
-              <h3 className="text-lg font-semibold text-gray-900">
-                {attendance.user?.firstName} {attendance.user?.lastName}
-              </h3>
+              <span className="flex items-center gap-4 mb-2">
+                <span className="flex items-center gap-1">
+                  <h3 className="text-lg font-semibold text-gray-900 inline-block">
+                    {attendance.user?.firstName} {attendance.user?.middleName}{' '}
+                    {attendance.user?.lastName}
+                    {/*Username */}
+                  </h3>
+                  <span
+                    className="
+                  text-sm text-gray-500 hover:underline cursor-pointer
+                  "
+                    onClick={() => navigate(`/dashboard/user/${attendance.userId}`)}
+                  >
+                    ({attendance.user?.username ? `@${attendance.user.username}` : 'View Profile'})
+                  </span>
+                </span>
+
+                {/* call button */}
+                <span
+                  className="text-sm text-gray-500 cursor-pointer"
+                  onClick={() => handleCall(attendance.user?.mobile)}
+                >
+                  📞
+                </span>
+              </span>
               <span
                 className={`px-3 py-1 text-sm font-medium rounded-full 
                   ${attendance.status === 'present' ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}
@@ -49,11 +78,11 @@ function EventAttendance() {
                 {attendance.status}
               </span>
               {/* show deactivation label if the user is marked as activated */}
-              {attendance.user?.isActive===false && (
+              {attendance.user?.isActive === false && (
                 <span className="ml-2 px-3 py-1 text-sm font-medium bg-yellow-200 text-yellow-800 rounded-full">
                   Deactivated
                 </span>
-              )} 
+              )}
             </div>
           ))}
         </div>
