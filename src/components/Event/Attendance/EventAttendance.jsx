@@ -46,22 +46,12 @@ function EventAttendance() {
               className="border border-gray-300 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100 transition cursor-pointer"
               // onClick={() => navigate(`/dashboard/user/${attendance.userId}`)}
             >
-              <span className="flex items-center gap-4 mb-2">
-                <span className="flex items-center gap-1">
-                  <h3 className="text-lg font-semibold text-gray-900 inline-block">
-                    {attendance.user?.firstName} {attendance.user?.middleName}{' '}
-                    {attendance.user?.lastName}
-                    {/*Username */}
-                  </h3>
-                  <span
-                    className="
-                  text-sm text-gray-500 hover:underline cursor-pointer
-                  "
-                    onClick={() => navigate(`/dashboard/user/${attendance.userId}`)}
-                  >
-                    ({attendance.user?.username ? `@${attendance.user.username}` : 'View Profile'})
-                  </span>
-                </span>
+              <span className="flex items-center gap-4 mb-2 ">
+                <h3 className="text-lg font-semibold text-gray-900 inline-block">
+                  {attendance.user?.firstName} {attendance.user?.middleName}{' '}
+                  {attendance.user?.lastName}
+                  {/*Username */}
+                </h3>
 
                 {/* call button */}
                 <span
@@ -71,12 +61,27 @@ function EventAttendance() {
                   📞
                 </span>
               </span>
+
               <span
                 className={`px-3 py-1 text-sm font-medium rounded-full 
                   ${attendance.status === 'present' ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}
               >
                 {attendance.status}
               </span>
+
+              {/*
+                    Username button with link to user profile
+                    */}
+              <span
+                className="
+                  bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium cursor-pointer hover:bg-blue-200 transition mx-1
+                "
+                onClick={() => navigate(`/dashboard/user/${attendance.userId}`)}
+              >
+                {/* {attendance.user?.username ? `@${attendance.user.username}` : 'View Profile'} */}
+                View Profile
+              </span>
+
               {/* show deactivation label if the user is marked as activated */}
               {attendance.user?.isActive === false && (
                 <span className="ml-2 px-3 py-1 text-sm font-medium bg-yellow-200 text-yellow-800 rounded-full">
