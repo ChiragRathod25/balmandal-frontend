@@ -418,9 +418,7 @@ const router = createBrowserRouter([
           {
             path: '',
             element: (
-              <AuthLayout>
                 <AllPost />
-              </AuthLayout>
             ),
           },
           {
@@ -434,9 +432,7 @@ const router = createBrowserRouter([
           {
             path: ':postId',
             element: (
-              <AuthLayout>
                 <Post />
-              </AuthLayout>
             ),
           },
           {
