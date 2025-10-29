@@ -7,11 +7,11 @@ import useCustomReactQuery from '../../utils/useCustomReactQuery.js';
 import { QueryHandler, Button, PostInteractions } from '../../components/index.js';
 
 function Post() {
-  const isAdmin = useSelector((state) => state.auth.userData?.isAdmin);
+  const isAdmin = useSelector((state) => state.auth?.userData?.isAdmin);
   const { postId } = useParams();
   const navigate = useNavigate();
 
-  const authUser = useSelector((state) => state.auth.userData);
+  const authUser = useSelector((state) => state.auth?.userData);
 
   // Fetch post data
   const fetchPost = useCallback(() => databaseService.getPostById({ postId }), [postId]);
@@ -95,7 +95,7 @@ function Post() {
           className="
         grid grid-cols-3  gap-4 mt-6"
         >
-          {post.createdBy === authUser._id || isAdmin ? (
+          {authUser && post.createdBy === authUser?._id || isAdmin ? (
             <>
               <Button
                 onClick={() => navigate('/post/edit/' + postId)}
@@ -115,6 +115,7 @@ function Post() {
             </>
           ) : null}
 
+          {isAdmin (
           {isAdmin && post?.isApproved ? (
             <>
               <Button
@@ -136,6 +137,11 @@ function Post() {
               </Button>
             </>
           )}
+          ):(
+          <>
+          </>
+          )}
+          
         </div>
       </div>
     </QueryHandler>
