@@ -63,8 +63,8 @@ function Post() {
           {Parse(post?.content || "")}
         </div>
 
-        {/* Post Interactions */}
-        <PostInteractions />
+        {/* Post Interactions — only show if user is logged in */}
+        {authUser && <PostInteractions />}
 
         {/* Action Buttons */}
         <div className="grid grid-cols-3 gap-4 mt-6">
